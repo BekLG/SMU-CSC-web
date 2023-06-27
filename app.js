@@ -18,7 +18,18 @@ app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
 
-
+const memberSchema = new mongoose.Schema({
+    firstName: String,
+    lastName: String,
+    schoolId: String,   // ye temariw ID
+    section: String,
+    gender: String,
+    email: String,
+    phoneNumber: String,
+    interests: [String],        //topics that the member is interested on e.g., programming, artificial intelligence, cybersecurity, data science, web development, etc.
+    skillLevel: String          // members skill level on selected interests
+});
+const Member = new mongoose.model("member", memberSchema);
 
 app.get("/", function(req,res){
     res.send("home page");
