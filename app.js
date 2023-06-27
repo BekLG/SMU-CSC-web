@@ -40,9 +40,9 @@ const eventSchema= new mongoose.Schema({
     registrationRequired: Boolean,
     registrationDeadline:Date,
     registrationLink: String
-
 });
 
+const Event = new mongoose.model("event", eventSchema);
 
 
 app.get("/", function(req,res){
