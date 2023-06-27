@@ -34,11 +34,11 @@ const Member = new mongoose.model("member", memberSchema);
 
 const eventSchema= new mongoose.Schema({
     title: String,
-    dateAndTime:dateTime,
+    dateAndTime:Date,
     venue : String,
     description: String,
     registrationRequired: Boolean,
-    registrationDeadline:dateTime,
+    registrationDeadline:Date,
     registrationLink: String
 
 });
