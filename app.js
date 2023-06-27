@@ -31,9 +31,25 @@ const memberSchema = new mongoose.Schema({
 });
 const Member = new mongoose.model("member", memberSchema);
 
+
+const eventSchema= new mongoose.Schema({
+    title: String,
+    dateAndTime:dateTime,
+    venue : String,
+    description: String,
+    registrationRequired: Boolean,
+    registrationDeadline:dateTime,
+    registrationLink: String
+
+});
+
+
+
 app.get("/", function(req,res){
     res.send("home page");
 })
+
+
 
 
 app.post("/newMembership",function(req,res){
