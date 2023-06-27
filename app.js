@@ -16,7 +16,7 @@ app.set('public', path.join(__dirname, 'public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/CSC", { useNewUrlParser: true });
 
 const memberSchema = new mongoose.Schema({
     firstName: String,
@@ -36,6 +36,26 @@ app.get("/", function(req,res){
 })
 
 
+app.post("/newMembership",function(req,res){
+
+    const member = new Member({
+        
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        schoolId : req.body.schoolId,
+        section: req.body.section,
+        gender: req.body.gender,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        interests: req.body.interests ,
+        skillLevel: req.body.skillLevel
+    })
+
+    member.save();
+    console.log("successfully saved");
+    res.redirect("/");
+    
+})
 
 
 
