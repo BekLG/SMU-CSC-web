@@ -90,6 +90,16 @@ app.get("/events", function(req,res){
 
 app.get("/gallery", function(req,res){
     // gallery page will be displayed.
+
+    GalleryImage.find({})  
+    .then((foundImage) => {
+        // res.render("gallery", { Image: foundImage, });
+        res.send(foundImage);
+
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 })
 
 app.get("/login", function(req,res){
