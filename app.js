@@ -11,6 +11,8 @@ const { log } = require("console");
 
 const Member= require("./modules/member")
 const Event= require("./modules/event")
+const News= require("./modules/news")
+
 
 const app = express();
 
@@ -21,16 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
-
-
-const newsSchema = new mongoose.Schema({
-    title: String,
-    date: Date,
-    content: String,
-    coverURL: String
-});
-
-const News= new mongoose.model("news", newsSchema);
 
 
 const galleryImageSchema = new mongoose.Schema({
