@@ -12,6 +12,8 @@ const { log } = require("console");
 const Member= require("./modules/member")
 const Event= require("./modules/event")
 const News= require("./modules/news")
+const GalleryImage= require("./modules/galleryImage")
+const upload = require('./modules/multerMiddleware')
 
 
 const app = express();
@@ -95,12 +97,17 @@ app.post("/admin/news", function(req,res){
     // new-news will be saved on database .
 })
 
-app.post("/admin/gallery", function(req,res){
+app.post("/admin/gallery",upload.single('imageURL'), function(req,res){
     // new photos will be saved on database.
 
-    
 
+    const galleryImage= new GalleryImage({
+        caption: req.body.caption,
+        imageURL: "images/news/" + req.file.filename
+    })
 
+    galleryImage.save();
+    res.redirect("/");
 })
 
 app.get("/admin/attendance", function(req,res){
