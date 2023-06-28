@@ -10,6 +10,7 @@ const { log } = require("console");
 
 
 const Member= require("./modules/member")
+const Event= require("./modules/event")
 
 const app = express();
 
@@ -20,19 +21,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
-
-
-const eventSchema= new mongoose.Schema({
-    title: String,
-    dateAndTime:Date,
-    venue : String,
-    description: String,
-    registrationRequired: Boolean,  //is registration required or not?? if not required registrationLink will be empty.
-    registrationDeadline:Date,
-    registrationLink: String
-});
-
-const Event = new mongoose.model("event", eventSchema);
 
 
 const newsSchema = new mongoose.Schema({
