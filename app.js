@@ -38,7 +38,7 @@ const eventSchema= new mongoose.Schema({
     dateAndTime:Date,
     venue : String,
     description: String,
-    registrationRequired: Boolean,
+    registrationRequired: Boolean,  //is registration required or not?? if not required registrationLink will be empty.
     registrationDeadline:Date,
     registrationLink: String
 });
@@ -66,11 +66,13 @@ const GalleryImage= new mongoose.model("galleryImage", galleryImageSchema);
 
 
 app.get("/", function(req,res){
+    // home page will be displayed
     res.send("home page");
 })
 
-
-
+app.get("/newMembership", function(req,res){
+    // new membership registration page will be displayed.
+})
 
 app.post("/newMembership",function(req,res){
 
@@ -91,6 +93,52 @@ app.post("/newMembership",function(req,res){
     console.log("successfully saved");
     res.redirect("/");
     
+})
+
+
+
+
+app.get("/news", function(req,res){
+    // news page will be displayed.
+})
+
+
+app.get("/events", function(req,res){
+    // events page will be displayed.
+})
+
+app.get("/login", function(req,res){
+    // admin will be authenticated.
+})
+
+
+app.get("/admin", function(req,res){
+    // admin will be authenticated and admins page will be displayed.
+})
+
+app.get("/admin/events", function(req,res){
+    // events and new-event adding form will be displayed for admin.
+})
+
+app.post("/admin/events", function(req,res){
+    // new-event will be saved on database .
+})
+
+
+app.get("/admin/news", function(req,res){
+    // news and new-news adding form will be displayed for admin.
+})
+
+app.post("/admin/news", function(req,res){
+    // new-news will be saved on database .
+})
+
+app.get("/admin/attendance", function(req,res){
+    // attendance taking page will be rendered
+})
+
+app.post("/admin/attendance", function(req,res){
+    // new attendance will be saved on DB
 })
 
 
