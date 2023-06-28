@@ -60,6 +60,16 @@ app.post("/newMembership",function(req,res){
 
 app.get("/news", function(req,res){
     // news page will be displayed.
+
+    News.find({})  
+    .then((foundNews) => {
+        // res.render("news", { News: foundNews, });
+        res.send(foundNews);
+
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 })
 
 
