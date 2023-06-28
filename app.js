@@ -86,6 +86,7 @@ app.get("/admin/events", function(req,res){
 
 app.post("/admin/events", function(req,res){
     // new-event will be saved on database .
+    
 })
 
 
@@ -93,17 +94,27 @@ app.get("/admin/news", function(req,res){
     // news and new-news adding form will be displayed for admin.
 })
 
-app.post("/admin/news", function(req,res){
+app.post("/admin/news",upload.single('imageURL'), function(req,res){
     // new-news will be saved on database .
+
+    const currentDate= new Date();
+
+    const news= new News({
+        title: req.body.title,
+        date: currentDate,
+        content: req.body.content,
+        imageURL: "uploads/images/" + req.file.filename
+    })
+
+    news.save();
+    res.redirect("/");
 })
 
 app.post("/admin/gallery",upload.single('imageURL'), function(req,res){
-    // new photos will be saved on database.
-
-
+    // new photos-path and caption will be saved on database.
     const galleryImage= new GalleryImage({
         caption: req.body.caption,
-        imageURL: "images/news/" + req.file.filename
+        imageURL: "uploads/images/" + req.file.filename
     })
 
     galleryImage.save();
