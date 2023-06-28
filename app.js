@@ -56,7 +56,6 @@ app.post("/newMembership",function(req,res){
 
 
 
-
 app.get("/news", function(req,res){
     // news page will be displayed.
 })
@@ -64,6 +63,10 @@ app.get("/news", function(req,res){
 
 app.get("/events", function(req,res){
     // events page will be displayed.
+})
+
+app.get("/gallery", function(req,res){
+    // gallery page will be displayed.
 })
 
 app.get("/login", function(req,res){
@@ -90,6 +93,14 @@ app.get("/admin/news", function(req,res){
 
 app.post("/admin/news", function(req,res){
     // new-news will be saved on database .
+})
+
+app.post("/admin/gallery", function(req,res){
+    // new photos will be saved on database.
+
+    
+
+
 })
 
 app.get("/admin/attendance", function(req,res){
