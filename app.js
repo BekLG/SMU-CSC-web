@@ -8,6 +8,9 @@ const findOrCreate = require('mongoose-findorcreate');
 const path = require("path");
 const { log } = require("console");
 
+
+const Member= require("./modules/member")
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -16,21 +19,7 @@ app.set('public', path.join(__dirname, 'public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/CSC", { useNewUrlParser: true });
-
-const memberSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    schoolId: String,   // ye temariw ID
-    section: String,
-    gender: String,
-    email: String,
-    phoneNumber: String,
-    interests: [String],        //topics that the member is interested on e.g., programming, artificial intelligence, cybersecurity, data science, web development, etc.
-    skillLevel: String,        // members skill level on selected interests
-    attendances:[Object]        // collections of memebers attendance
-});
-const Member = new mongoose.model("member", memberSchema);
+mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
 
 
 const eventSchema= new mongoose.Schema({
@@ -90,7 +79,6 @@ app.post("/newMembership",function(req,res){
     })
 
     member.save();
-    console.log("successfully saved");
     res.redirect("/");
     
 })
