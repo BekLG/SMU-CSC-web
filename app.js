@@ -65,6 +65,7 @@ app.get("/news", function(req,res){
 
 app.get("/events", function(req,res){
     // events page will be displayed.
+    //on the front-end if registrationRequired is false the registrationLink button will not be rendered
 })
 
 app.get("/gallery", function(req,res){
@@ -86,7 +87,27 @@ app.get("/admin/events", function(req,res){
 
 app.post("/admin/events", function(req,res){
     // new-event will be saved on database .
-    
+
+    const dateAndTimeInput = req.body.dateAndTime;
+    const registrationDeadlineInput = req.body.registrationDeadline;
+    const dateAndTime = new Date(dateAndTimeInput);
+    const registrationDeadline = new Date(registrationDeadlineInput);
+
+    const event= new Event({
+
+        title: req.body.title,
+        dateAndTime:dateAndTime,
+        venue : req.body.venue,
+        description: req.body.description,
+        registrationRequired: req.body.registrationRequired,  
+        registrationDeadline:registrationDeadline,
+        registrationLink: req.body.registrationLink
+    })
+
+    event.save();
+    res.redirect("/");
+
+    // on the front-end if registrationRequired is false the registrationLink input have to be disabled
 })
 
 
