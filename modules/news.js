@@ -4,7 +4,7 @@ const newsSchema = new mongoose.Schema({
     title: String,
     date: Date,
     content: String,
-    coverURL: String
+    imageURL: String
 });
 
 const News= new mongoose.model("news", newsSchema);
