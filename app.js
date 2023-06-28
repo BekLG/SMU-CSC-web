@@ -46,9 +46,23 @@ const eventSchema= new mongoose.Schema({
 const Event = new mongoose.model("event", eventSchema);
 
 
+const newsSchema = new mongoose.Schema({
+    title: String,
+    date: Date,
+    content: String,
+    coverURL: String
+});
+
+const News= new mongoose.model("news", newsSchema);
 
 
+const galleryImageSchema = new mongoose.Schema({
+    caption: String,
+    imageURL: String
+});
 
+
+const GalleryImage= new mongoose.model("galleryImage", galleryImageSchema);
 
 
 app.get("/", function(req,res){
