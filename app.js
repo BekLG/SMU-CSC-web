@@ -25,15 +25,6 @@ app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
 
 
-const galleryImageSchema = new mongoose.Schema({
-    caption: String,
-    imageURL: String
-});
-
-
-const GalleryImage= new mongoose.model("galleryImage", galleryImageSchema);
-
-
 app.get("/", function(req,res){
     // home page will be displayed
     res.send("home page");
