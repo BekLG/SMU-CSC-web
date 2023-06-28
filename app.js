@@ -76,6 +76,16 @@ app.get("/news", function(req,res){
 app.get("/events", function(req,res){
     // events page will be displayed.
     //on the front-end if registrationRequired is false the registrationLink button will not be rendered
+
+    Event.find({})  
+    .then((foundEvent) => {
+        // res.render("events", { Event: foundEvent, });
+        res.send(foundEvent);
+
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 })
 
 app.get("/gallery", function(req,res){
