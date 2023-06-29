@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const lodash = require("lodash");
 const findOrCreate = require('mongoose-findorcreate');
 const path = require("path");
+const bcrypt= require("bcrypt");
 const { log } = require("console");
 
 
@@ -104,6 +105,10 @@ app.get("/gallery", function(req,res){
 })
 
 app.get("/login", function(req,res){
+    // login page will be displayed
+})
+
+app.post("/login", function(req,res){
     // admin will be authenticated.
 })
 
@@ -186,4 +191,29 @@ app.post("/admin/attendance", function(req,res){
 
 app.listen(3000, function(req,res){
     console.log("listening on port 3000");
+
+
+    Admin.find({email: process.env.EMAIL_1})
+    .then((foundAdmin)=>{
+        if(foundAdmin.length===0)
+        {
+            console.log("no admin found!");
+            const password= bcrypt.hashSync(process.env.PASSWORD_1,10);
+            const admin= new Admin({
+                email: process.env.EMAIL_1,
+                password: password,
+            })
+            admin.save();
+            console.log(password);
+        }
+        else{
+            console.log("admin found!");
+        }
+    })
+    .catch((err)=>{
+        console.log(err);
+    })           
+
+
+
 })
