@@ -14,6 +14,7 @@ const Event= require("./modules/event")
 const News= require("./modules/news")
 const GalleryImage= require("./modules/galleryImage")
 const upload = require('./modules/multerMiddleware')
+const Admin = require('./modules/admin')
 
 
 const app = express();
