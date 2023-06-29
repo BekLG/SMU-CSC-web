@@ -7,14 +7,14 @@ const lodash = require("lodash");
 const findOrCreate = require('mongoose-findorcreate');
 const path = require("path");
 const session = require("express-session");
-const bcrypt= require("bcrypt");
+const bcrypt = require("bcrypt");
 const { log } = require("console");
 
 
-const Member= require("./modules/member")
-const Event= require("./modules/event")
-const News= require("./modules/news")
-const GalleryImage= require("./modules/galleryImage")
+const Member = require("./modules/member")
+const Event = require("./modules/event")
+const News = require("./modules/news")
+const GalleryImage = require("./modules/galleryImage")
 const upload = require('./modules/multerMiddleware')
 const Admin = require('./modules/admin')
 
@@ -36,130 +36,128 @@ app.use(session({
 mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
 
 
-app.get("/", function(req,res){
+app.get("/", function (req, res) {
     // home page will be displayed
     res.send("home page");
 })
 
-app.get("/newMembership", function(req,res){
+app.get("/newMembership", function (req, res) {
     // new membership registration page will be displayed.
 })
 
-app.post("/newMembership",function(req,res){
+app.post("/newMembership", function (req, res) {
 
     const member = new Member({
-        
+
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        schoolId : req.body.schoolId,
+        schoolId: req.body.schoolId,
         section: req.body.section,
         gender: req.body.gender,
         email: req.body.email,
         phoneNumber: req.body.phoneNumber,
-        interests: req.body.interests ,
+        interests: req.body.interests,
         skillLevel: req.body.skillLevel
     })
 
     member.save();
     res.redirect("/");
-    
+
 })
 
-
-
-app.get("/news", function(req,res){
+app.get("/news", function (req, res) {
     // news page will be displayed.
 
-    News.find({})  
-    .then((foundNews) => {
-        // res.render("news", { News: foundNews, });
-        res.send(foundNews);
+    News.find({})
+        .then((foundNews) => {
+            // res.render("news", { News: foundNews, });
+            res.send(foundNews);
 
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 })
 
 
-app.get("/events", function(req,res){
+app.get("/events", function (req, res) {
     // events page will be displayed.
     //on the front-end if registrationRequired is false the registrationLink button will not be rendered
 
-    Event.find({})  
-    .then((foundEvent) => {
-        // res.render("events", { Event: foundEvent, });
-        res.send(foundEvent);
+    Event.find({})
+        .then((foundEvent) => {
+            // res.render("events", { Event: foundEvent, });
+            res.send(foundEvent);
 
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 })
 
-app.get("/gallery", function(req,res){
+app.get("/gallery", function (req, res) {
     // gallery page will be displayed.
 
-    GalleryImage.find({})  
-    .then((foundImage) => {
-        // res.render("gallery", { Image: foundImage, });
-        res.send(foundImage);
+    GalleryImage.find({})
+        .then((foundImage) => {
+            // res.render("gallery", { Image: foundImage, });
+            res.send(foundImage);
 
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 })
 
-app.get("/login", function(req,res){
+app.get("/login", function (req, res) {
     // login page will be displayed
 })
 
-app.post("/login", function(req,res){
+app.post("/login", function (req, res) {
     // admin will be authenticated.
 
     const email = req.body.email;
     const password = req.body.password;
-  
-    Admin.find({email: email})
-      .then((foundAdmin) => {
-        if (foundAdmin.length === 0) {
-          console.log("no admins found!");
-          res.redirect('/login');
-        } else {
-          const storedHashedPassword = foundAdmin[0].password;
-          bcrypt.compare(password, storedHashedPassword, (err, result) => {
-            if (err || !result) {
-              // Invalid login credentials, redirect to login page
-              console.log("password didnt match");
-              res.redirect('/login');
+
+    Admin.find({ email: email })
+        .then((foundAdmin) => {
+            if (foundAdmin.length === 0) {
+                console.log("no admins found!");
+                res.redirect('/login');
             } else {
-              // Valid login credentials, set session variable to indicate that the user is logged in
-              req.session.isLoggedIn = true;
-              req.session.role = 'admin';
-              // Redirect to dashboard
-              res.redirect('/admin');
+                const storedHashedPassword = foundAdmin[0].password;
+                bcrypt.compare(password, storedHashedPassword, (err, result) => {
+                    if (err || !result) {
+                        // Invalid login credentials, redirect to login page
+                        console.log("password didnt match");
+                        res.redirect('/login');
+                    } else {
+                        // Valid login credentials, set session variable to indicate that the user is logged in
+                        req.session.isLoggedIn = true;
+                        req.session.role = 'admin';
+                        // Redirect to dashboard
+                        res.redirect('/admin');
+                    }
+                });
             }
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 
 })
 
 
-app.get("/admin", function(req,res){
+app.get("/admin", function (req, res) {
     // admin will be authenticated and admins page will be displayed.
     res.send("admin page");
 })
 
-app.get("/admin/events", function(req,res){
+app.get("/admin/events", function (req, res) {
     // events and new-event adding form will be displayed for admin.
 })
 
-app.post("/admin/events", function(req,res){
+app.post("/admin/events", function (req, res) {
     // new-event will be saved on database .
 
     const dateAndTimeInput = req.body.dateAndTime;
@@ -167,14 +165,14 @@ app.post("/admin/events", function(req,res){
     const dateAndTime = new Date(dateAndTimeInput);
     const registrationDeadline = new Date(registrationDeadlineInput);
 
-    const event= new Event({
+    const event = new Event({
 
         title: req.body.title,
-        dateAndTime:dateAndTime,
-        venue : req.body.venue,
+        dateAndTime: dateAndTime,
+        venue: req.body.venue,
         description: req.body.description,
-        registrationRequired: req.body.registrationRequired,  
-        registrationDeadline:registrationDeadline,
+        registrationRequired: req.body.registrationRequired,
+        registrationDeadline: registrationDeadline,
         registrationLink: req.body.registrationLink
     })
 
@@ -185,16 +183,16 @@ app.post("/admin/events", function(req,res){
 })
 
 
-app.get("/admin/news", function(req,res){
+app.get("/admin/news", function (req, res) {
     // news and new-news adding form will be displayed for admin.
 })
 
-app.post("/admin/news",upload.single('imageURL'), function(req,res){
+app.post("/admin/news", upload.single('imageURL'), function (req, res) {
     // new-news will be saved on database .
 
-    const currentDate= new Date();
+    const currentDate = new Date();
 
-    const news= new News({
+    const news = new News({
         title: req.body.title,
         date: currentDate,
         content: req.body.content,
@@ -205,9 +203,9 @@ app.post("/admin/news",upload.single('imageURL'), function(req,res){
     res.redirect("/");
 })
 
-app.post("/admin/gallery",upload.single('imageURL'), function(req,res){
+app.post("/admin/gallery", upload.single('imageURL'), function (req, res) {
     // new photos-path and caption will be saved on database.
-    const galleryImage= new GalleryImage({
+    const galleryImage = new GalleryImage({
         caption: req.body.caption,
         imageURL: "uploads/images/" + req.file.filename
     })
@@ -216,42 +214,39 @@ app.post("/admin/gallery",upload.single('imageURL'), function(req,res){
     res.redirect("/");
 })
 
-app.get("/admin/attendance", function(req,res){
+
+app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
 })
 
-app.post("/admin/attendance", function(req,res){
+app.post("/admin/attendance", function (req, res) {
     // new attendance will be saved on DB
 })
 
 
 
 
-app.listen(3000, function(req,res){
+app.listen(3000, function (req, res) {
     console.log("listening on port 3000");
 
 
-    Admin.find({email: process.env.EMAIL_1})
-    .then((foundAdmin)=>{
-        if(foundAdmin.length===0)
-        {
-            console.log("admin not found!");
-            const password= bcrypt.hashSync(process.env.PASSWORD_1,10);
-            const admin= new Admin({
-                email: process.env.EMAIL_1,
-                password: password,
-            })
-            admin.save();
-            
-        }
-        else{
-            console.log("admin found!");
-        }
-    })
-    .catch((err)=>{
-        console.log(err);
-    })           
+    Admin.find({ email: process.env.EMAIL_1 })
+        .then((foundAdmin) => {
+            if (foundAdmin.length === 0) {
+                console.log("admin not found!");
+                const password = bcrypt.hashSync(process.env.PASSWORD_1, 10);
+                const admin = new Admin({
+                    email: process.env.EMAIL_1,
+                    password: password,
+                })
+                admin.save();
 
-
-
+            }
+            else {
+                console.log("admin found!");
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 })
