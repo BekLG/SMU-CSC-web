@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const lodash = require("lodash");
 const findOrCreate = require('mongoose-findorcreate');
 const path = require("path");
+const session = require("express-session");
 const bcrypt= require("bcrypt");
 const { log } = require("console");
 
@@ -25,6 +26,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('public', path.join(__dirname, 'public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+app.use(session({
+    secret: "our little secret to be replaced by dotenv.",
+    resave: false,
+    saveUninitialized: false
+}));
 
 mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
 
@@ -110,11 +117,42 @@ app.get("/login", function(req,res){
 
 app.post("/login", function(req,res){
     // admin will be authenticated.
+
+    const email = req.body.email;
+    const password = req.body.password;
+  
+    Admin.find({email: email})
+      .then((foundAdmin) => {
+        if (foundAdmin.length === 0) {
+          console.log("no admins found!");
+          res.redirect('/login');
+        } else {
+          const storedHashedPassword = foundAdmin[0].password;
+          bcrypt.compare(password, storedHashedPassword, (err, result) => {
+            if (err || !result) {
+              // Invalid login credentials, redirect to login page
+              console.log("password didnt match");
+              res.redirect('/login');
+            } else {
+              // Valid login credentials, set session variable to indicate that the user is logged in
+              req.session.isLoggedIn = true;
+              req.session.role = 'admin';
+              // Redirect to dashboard
+              res.redirect('/admin');
+            }
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
 })
 
 
 app.get("/admin", function(req,res){
     // admin will be authenticated and admins page will be displayed.
+    res.send("admin page");
 })
 
 app.get("/admin/events", function(req,res){
