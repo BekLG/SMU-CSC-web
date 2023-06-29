@@ -197,14 +197,14 @@ app.listen(3000, function(req,res){
     .then((foundAdmin)=>{
         if(foundAdmin.length===0)
         {
-            console.log("no admin found!");
+            console.log("admin not found!");
             const password= bcrypt.hashSync(process.env.PASSWORD_1,10);
             const admin= new Admin({
                 email: process.env.EMAIL_1,
                 password: password,
             })
             admin.save();
-            console.log(password);
+            
         }
         else{
             console.log("admin found!");
