@@ -13,6 +13,13 @@ body {
   clear: both;
 }  
 
+section{
+  z-index: 0;
+}
+.navbar{
+  z-index: 1;
+}
+
 /*  navbar  */
 
 .navbar{
@@ -60,7 +67,6 @@ header img{
 .welcome h1{
     font-family: cursive;
     font-weight: 700;
-    font-size: 3.5vw;
     text-align: center;
     color: white;
 
@@ -69,10 +75,118 @@ header img{
     text-align: center;
     line-height: 70px;
     color: white;
-    font-size: 1.5vw;
+    font-size: 1.35rem;
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* Popup registration form*/
+
+.overlay{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(0, 0, 0, 0.8);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 2;
+
+}
+.overlay:target{
+  visibility: visible;
+  opacity: 1;
+}
+.wrapper{
+  margin: 70px auto;
+  padding: 20px;
+  background: #e7e7e7;
+  border-radius: 20px;
+  width: 35%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.wrapper h2{
+  margin-top: 0;
+  color: #2a2a62;
+}
+.wrapper .close{
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #2a2a62;
+
+}
+.wrapper .content{
+  max-height: 30%;
+  overflow: auto;
+}
+
+.form-container{
+  border-radius: 20px;
+  background-color: #e7e7e7;
+  padding: 20px 0;
+}
+form label{
+  margin-left: 3px;
+  margin-right: 10px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+form .selection{
+  font-size: 14px;
+}
+input[type=text],input[type=email],input[type=tel], textarea{
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  margin-bottom: 5px;
+  resize: vertical;
+}
+input[type=radio] label{
+  font-size: 2px;
+}
+input[type="submit"]{
+  background-color: #2a2a62;
+  color: #fff;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  
+}
+
+input[type="submit"]:hover{
+  background-color:#1482e3
+}
+select{
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
+@media screen and (max-width:950px) {
+  .wrapper{
+      width: 60%;
+  }
+}
+
+@media screen and (max-width:550px) {
+  .wrapper{
+      width: 90%;
+  }
+}
 /* info */
 
 .info{
@@ -89,7 +203,7 @@ header img{
     width: 20%;
     height: 660px;
     float: right;
-    padding: 15px;
+    padding: 25px;
     background-color: rgb(241, 239, 239);
     position: relative;
     margin-right: 0;
@@ -224,7 +338,7 @@ header img{
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(29, 106, 154, 0.72);
+    background: rgba(29, 106, 154, 0.5);
     border-top: 5px solid white;
     border-right: 5px solid white;
     border-left: 5px solid white;
@@ -233,7 +347,7 @@ header img{
     visibility: hidden;
     opacity: 0;
     font-style: italic;
-    transition: opacity .8s, visibility .8s;
+    transition: opacity .95s, visibility .8s;
     padding-top: 15px;
 
   }
@@ -261,8 +375,8 @@ header img{
   .testimonials .card i {
     background-color: #2a2a62;
     color: #ffffff;
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     line-height: 75px;
     margin: -40px auto 0 auto;
   }
@@ -300,13 +414,14 @@ header img{
 
   .text{
     width: 100%;
-    margin-left: 10%;
+    margin-left: 3%;
     
   }
   .text h2{
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 10px;
+    margin-top: 20px;
     color: #2a2a62;
   }
   .text h5{
@@ -405,8 +520,9 @@ header img{
     margin-bottom: 25px;
   }
   .content .right-side p{
-    width: 75%;
+    width: 70%;
     font-size: 16px;
+    text-align: justify;
   }
   .right-side .input-box{
     height: 50px;
@@ -451,11 +567,11 @@ header img{
   }
   @media (max-width: 950px) {
     .container_contact{
-      width: 90%;
+      width: 100%;
       padding: 30px 40px 40px 35px ;
     }
     .container_contact .content .right-side{
-     width: 75%;
+     width: 100%;
      margin-left: 55px;
   }
   }
@@ -463,6 +579,7 @@ header img{
     .container_contact{
       margin: 40px 0;
       height: 100%;
+      width: 100%;
     }
     .container_contact .content{
       flex-direction: column-reverse;
@@ -480,6 +597,7 @@ header img{
    .container_contact.content .right-side{
      width: 100%;
      margin-left: 0;
+     text-align: justify;
    }
   }
   #footer {
