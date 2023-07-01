@@ -1,0 +1,103 @@
+
+/*News*/
+
+.news-section{
+    width: 100%;
+}
+.news-section .section-content{
+    width: 85%;
+    margin: 20px auto;
+}
+.news-section .section-content .news-cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    margin: 25px auto;
+}
+.news-section .section-content .news-cards .news-card{
+    width: 100%;
+    background-color: #f7f7f7;
+    position: relative;
+}
+.news-section .section-content .news-cards .news-card img{
+    width: 100%;
+    height: 250px;
+}
+.news-section .section-content .news-cards .news-card .article{
+    padding: 15px 20px;
+}
+.news-section .section-content .news-cards .news-card .article h4{
+    font-size: 24px;
+    color: #4a4a4a;
+}
+.news-section .section-content .news-cards .news-card .article p{
+    font-size: 16px;
+    margin: 10px 0px;
+    color: #6a6a6a;
+}
+.news-section .section-content .news-cards .news-card a{
+    text-decoration: none;
+    display: inline-block;
+    background-color: #2a2a62;
+    padding: 8px 15px;
+    margin-left: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+    border-radius: 25px;
+}
+.news-section .section-content .news-cards .news-card a:hover{
+    background-color: #52528d;
+}
+.news-section .section-content .news-cards .news-card .posted-date p{
+    font-weight: 600;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    background-color: greenyellow;
+    padding: 6px 15px;
+}
+@media screen and (max-width:920px){
+    .news-section .section-content .news-cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width:768px){
+    .news-section .section-content .news-cards{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Events ................*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
