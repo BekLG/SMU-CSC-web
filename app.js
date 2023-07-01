@@ -221,6 +221,35 @@ app.get("/admin/attendance", function (req, res) {
 
 app.post("/admin/attendance", function (req, res) {
     // new attendance will be saved on DB
+
+    //creating attendance object
+    const attendance = {
+        date: new Date(), // Current date and time
+        title: req.body.title,
+        attendanceType: req.body.attendanceType
+      };
+      
+      //var attendedMembers[]= req.body.attended;
+      var attendedMembers=["649bfc96cf1849039dab4a09", "649bfcf5c1361eb52f24cb70"];
+
+
+      attendedMembers.forEach(function(attendedMember){
+
+        var query = { _id: attendedMember };
+        Member.findOneAndUpdate(query, {
+          $push: { attendances: attendance }
+        })
+          .then(() => {
+           // res.redirect("/");
+           console.log(attendedMember);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
+      })
+      
+        res.redirect("/admin");   
 })
 
 
