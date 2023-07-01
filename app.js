@@ -221,6 +221,30 @@ app.get("/admin/attendance", function (req, res) {
 
 app.post("/admin/attendance", function (req, res) {
     // new attendance will be saved on DB
+
+    //creating attendance object
+    const attendance = {
+        date: new Date(), // Current date and time
+        title: req.body.title,
+        attendanceType: req.body.attendanceType
+      };
+      
+      
+      const query = { _id: req.body._id };
+      Member.findOneAndUpdate(query, {
+        $push: { attendances: attendance }
+      })
+        .then(() => {
+          console.log(req.body._id);
+          res.redirect("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      
+      
+
+
 })
 
 
