@@ -112,6 +112,16 @@ app.get("/gallery", function (req, res) {
 
 app.post("/comment", function(req,res){
     //a comment from user will be saved on db
+    const commnet = new Comment({
+
+        name: req.body.name,
+        email: req.body.email,
+        comment: req.body.comment
+   
+    })
+
+    commnet.save();
+    res.redirect("/");
 })
 
 app.get("/login", function (req, res) {
