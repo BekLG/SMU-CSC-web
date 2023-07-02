@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-admin.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin</title>
+</head>
+<body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <span class="logo_name">Admin</span>
+      </div>
+        <ul class="nav-links">
+          <li>
+            <a href="index-admin.html">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              <span class="links_name">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="members.html">
+                <i class="fa fa-users" aria-hidden="true"></i>
+              <span class="links_name">Members</span>
+            </a>
+          </li>
+          <li>
+            <a href="attendance.html" class="active">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              <span class="links_name">Attendance</span>
+            </a>
+          </li>
+          
+        </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class='bx bx-menu sidebarBtn'></i>
+          <span class="dashboard">Attendance</span>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="option">Attendance</div>
+        <input type="text" name="title" placeholder="Title" style="width: 60%;">
+        <input type="text" name="type" placeholder="Type" style="width: 60%;"><br>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Check</th>
+            </tr>
+            <tr>
+            <td><label for="Liya">Liya Habtemariam</label></td>
+            <td><input type="checkbox" name="Liya"></td>
+            </tr>
+            <tr>
+                <td><label for="Bereket">Bereket Legesse</label></td>
+                <td><input type="checkbox" name="Bereket"></td>
+            </tr>
+            <tr>
+                <td><label for="Liya">Liya Habtemariam</label></td>
+                <td><input type="checkbox" name="Liya"></td>
+            </tr>
+            <tr>
+                <td><label for="Bereket">Bereket Legesse</label></td>
+                <td><input type="checkbox" name="Bereket"></td>
+            </tr>
+        </table>
+
+        <div class="button">
+            <input type="submit" name="submit" id="" style="color: #fff;
+            background: #0A2558;
+            padding: 4px 12px;
+            font-size: 15px;
+            font-weight: 400;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            border-radius: 20px;
+            padding: 10px;">
+          </div>
+  
+      </div>
+  
+      
+    </section>
+    <script>
+     let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".sidebarBtn");
+  sidebarBtn.onclick = function() {
+    sidebar.classList.toggle("active");
+    if(sidebar.classList.contains("active")){
+    sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+  }else
+    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+  }
+   </script>
+  </body>
+</html>

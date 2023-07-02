@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-admin.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin</title>
+</head>
+<body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <span class="logo_name">Admin</span>
+      </div>
+        <ul class="nav-links">
+          <li>
+            <a href="index-admin.html" class="active">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              <span class="links_name">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="members.html">
+                <i class="fa fa-users" aria-hidden="true"></i>
+              <span class="links_name">Members</span>
+            </a>
+          </li>
+          <li>
+            <a href="attendance.html">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              <span class="links_name">Attendance</span>
+            </a>
+          </li>
+          
+        </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class='bx bx-menu sidebarBtn'></i>
+          <span class="dashboard">Dashboard</span>
+        </div>
+
+      </nav>
+      <div class="home-content">
+        <div class="overview-boxes">
+
+            <a href="addNews.html">
+                <div class="box">
+                    <div class="right-side">
+                      <div class="box-topic">Add News</div>
+                      <div class="indicator">
+                        <i class="fa fa-bullhorn" aria-hidden="true"></i>
+                        <a href="addNews.html"><span class="text"></span></a>
+                      </div>
+                    </div>
+                  </div>
+            </a>
+                
+            
+
+            <a href="addEvent.html">
+                <div class="box">
+                <div class="right-side">
+                  <div class="box-topic">Add Event</div>
+                  <div class="indicator">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <a href="addEvent.html"><span class="text"></span></a>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="addPhoto.html">
+                <div class="box">
+                    <div class="right-side">
+                      <div class="box-topic">Add Photo</div>
+                      <div class="indicator">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                        <a href="addPhoto.html"><span class="text"></span></a>
+                      </div>
+                    </div>
+                  </div>
+            </a>
+
+          
+
+        </div>
+
+        <div class="events-boxes">
+          <div class="recent-events box">
+            <div class="title">Recent Events</div>
+            <div class="events-details">
+              <ul class="details">
+                <li class="topic">Title</li>
+                <li><a href="#">Git/Github training</a></li>
+                <li><a href="#">Cybersecurity</a></li>
+                <li><a href="#">Introduction to AI</a></li>
+              </ul>
+              <ul class="details">
+              <li class="topic">Date</li>
+              <li><a href="#">02, jul 2023</a></li>
+              <li><a href="#">02, jul 2023</a></li>
+              <li><a href="#">02, jul 2023</a></li>
+            </ul>
+            <ul class="details">
+              <li class="topic">Time</li>
+              <li><a href="#">12:00LT</a></li>
+              <li><a href="#">12:00LT</a></li>
+              <li><a href="#">12:00LT</a></li>
+            </ul>
+            <ul class="details">
+              <li class="topic">Venue</li>
+              <li><a href="#">Multipurpose</a></li>
+              <li><a href="#">Multipurpose</a></li>
+              <li><a href="#">Multipurpose</a></li>
+            </ul>
+            </div>
+            <div class="button">
+              <a href="#">See All</a>
+            </div>
+          </div>
+          <div class="top-events box">
+            <div class="title">Recent News</div>
+            <ul class="top-events-details">
+              <li>
+              <a href="#">
+                <span class="product">Meeting announcement</span>
+              </a>
+              <span class="price">05, jul 2023</span>
+            </li>
+            <li>
+              <a href="#">
+                <span class="product">Meeting announcement</span>
+              </a>
+              <span class="price">05, jul 2023</span>
+            </li>
+            <li>
+              <a href="#">
+                <span class="product">Meeting announcement</span>
+              </a>
+              <span class="price">05, jul 2023</span>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+     let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".sidebarBtn");
+  sidebarBtn.onclick = function() {
+    sidebar.classList.toggle("active");
+    if(sidebar.classList.contains("active")){
+    sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+  }else
+    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+  }
+   </script>
+  </body>
+</html>
