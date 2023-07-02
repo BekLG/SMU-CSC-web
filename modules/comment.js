@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const commentSchema= new mongoose.Schema({
     name: String,
     email: String,
-    commnet: String
+    comment: String
 });
 
-const Commnet = new mongoose.model("comment", commentSchema);
+const comment = new mongoose.model("comment", commentSchema);
 
-module.exports = Commnet;
+module.exports = comment;
