@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-admin.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin</title>
+</head>
+<body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <span class="logo_name">Admin</span>
+      </div>
+        <ul class="nav-links">
+          <li>
+            <a href="index-admin.html">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              <span class="links_name">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="members.html" class="active">
+                <i class="fa fa-users" aria-hidden="true"></i>
+              <span class="links_name">Members</span>
+            </a>
+          </li>
+          <li>
+            <a href="attendance.html">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              <span class="links_name">Attendance</span>
+            </a>
+          </li>
+          
+        </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class='bx bx-menu sidebarBtn'></i>
+          <span class="dashboard">Members</span>
+        </div>
+
+      </nav>
+
+      <div class="home-content">
+        <div class="option">Member list</div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Section</th>
+                <th>Gender</th>
+                <th>Phone number</th>
+            </tr>
+
+            <tr>
+            <td>Liya Habtemariam</td>
+            <td>RCD/4289/2013</td>
+            <td>M</td>
+            <td>F</td>
+            <td>0961144982</td>
+            </tr>
+
+            <tr>
+                <td>Liya Habtemariam</td>
+                <td>RCD/4289/2013</td>
+                <td>M</td>
+                <td>F</td>
+                <td>0961144982</td>
+                </tr>
+
+                <tr>
+                    <td>Liya Habtemariam</td>
+                    <td>RCD/4289/2013</td>
+                    <td>M</td>
+                    <td>F</td>
+                    <td>0961144982</td>
+                    </tr>
+            
+        </table>
+      
+    </section>
+    <script>
+     let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".sidebarBtn");
+  sidebarBtn.onclick = function() {
+    sidebar.classList.toggle("active");
+    if(sidebar.classList.contains("active")){
+    sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+  }else
+    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+  }
+   </script>
+  </body>
+</html>
