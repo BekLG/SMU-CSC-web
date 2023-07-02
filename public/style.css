@@ -17,14 +17,17 @@ section{
   z-index: 0;
 }
 .navbar{
-  z-index: 1;
+  z-index: 90;
+  
 }
 
 /*  navbar  */
 
 .navbar{
     padding: 15px;
+    background-image: linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.08));
 }
+
 
 .navbar li a{
     color: rgb(35, 35, 37);
@@ -41,7 +44,7 @@ section{
 .navbar li a:hover{
     font-weight: 500;
     color: #1482e3;
-    background-color: white;
+    background-color: transparent;
 }
 .dropdown-menu{
     box-shadow: 2px 1px lightblue;
@@ -49,6 +52,11 @@ section{
 header img{
     width: 80px;
     height: 60px;
+}
+@media(max-width:668px){
+  .nav-item{
+    text-align: center;
+  }
 }
 
 
@@ -58,18 +66,21 @@ header img{
     height: 70vh;
     margin-top: 0;
     padding-top: 40vh;
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/image7.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('../views/images/image7.jpg');
     background-size: 100% 100%;
     background-position: center;
     position: relative;
     
 }
 
+
 .welcome h1{
     font-family: cursive;
-    font-weight: 700;
+    font-weight: 1000;
     text-align: center;
     color: white;
+
+   
 
 }
 .welcome p{
@@ -346,9 +357,7 @@ select{
     left: 0;
     right: 0;
     background: rgba(29, 106, 154, 0.5);
-    border-top: 5px solid white;
-    border-right: 5px solid white;
-    border-left: 5px solid white;
+    
     border-radius: 20px;
     color: #fff;
     visibility: hidden;
