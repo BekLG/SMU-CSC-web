@@ -288,7 +288,7 @@ app.post("/admin/attendance", function (req, res) {
           $push: { attendances: attendance }
         })
           .then(() => {
-           console.log(attendedMember);
+           
           })
           .catch((err) => {
             console.log(err);
