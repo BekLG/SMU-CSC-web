@@ -7,7 +7,8 @@ const eventSchema= new mongoose.Schema({
     description: String,
     registrationRequired: Boolean,  //is registration required or not?? if not required registrationLink will be empty.
     registrationDeadline:Date,
-    registrationLink: String
+    registrationLink: String,
+    imageURL: String
 });
 
 const Event = new mongoose.model("event", eventSchema);

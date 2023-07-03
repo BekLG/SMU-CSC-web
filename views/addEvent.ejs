@@ -47,19 +47,19 @@
 
       <div class="home-content">
 
-        <form action="/admin/events" method="post">
+        <form action="/admin/events" method="post" enctype="multipart/form-data">
           <div class="option">Add Event</div>
           <input type="text" name="title" id="" placeholder="title">
           Date & time:
-          <input type="datetime-local" name="datetime" id="">
+          <input type="datetime-local" name="dateAndTime" id="">
           <input type="text" name="venue" id="" placeholder="Venue">
-          <textarea name="content" id="" cols="10" rows="4" placeholder="Description"></textarea>
-          Registration Deadline: <input type="datetime-local" name="deadline">
-          <input type="text" name="link" placeholder="link">
+          <textarea name="description" id="" cols="10" rows="4" placeholder="Description"></textarea>
+          Registration Deadline: <input type="datetime-local" name="registrationDeadline">
+          <input type="text" name="registrationLink" placeholder="link">
           Cover image:<br>
-          <input type="file">
+          <input type="file" name="image">
           <label for="requirement">Registration is required: </label>
-          <input type="checkbox" name="requirement" id=""><br>
+          <input type="checkbox" name="registrationRequired" id=""><br>
           <div class="button">
             <input type="submit" name="submit" id="" style="color: #fff;
             background: #0A2558;

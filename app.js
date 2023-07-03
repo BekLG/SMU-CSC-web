@@ -173,7 +173,7 @@ app.get("/admin/events", function (req, res) {
     res.render("addEvent")
 })
 
-app.post("/admin/events", function (req, res) {
+app.post("/admin/events", upload.single('image'), function (req, res) {
     // new-event will be saved on database .
 
     const dateAndTimeInput = req.body.dateAndTime;
@@ -181,19 +181,22 @@ app.post("/admin/events", function (req, res) {
     const dateAndTime = new Date(dateAndTimeInput);
     const registrationDeadline = new Date(registrationDeadlineInput);
 
+    const registrationRequired = req.body.registrationRequired === "on";
+
     const event = new Event({
 
         title: req.body.title,
         dateAndTime: dateAndTime,
         venue: req.body.venue,
         description: req.body.description,
-        registrationRequired: req.body.registrationRequired,
+        registrationRequired: registrationRequired,
         registrationDeadline: registrationDeadline,
-        registrationLink: req.body.registrationLink
+        registrationLink: req.body.registrationLink,
+        imageURL: "uploads/images/" + req.file.filename
     })
 
     event.save();
-    res.redirect("/");
+    res.redirect("/admin");
 
     // on the front-end if registrationRequired is false the registrationLink input have to be disabled
 })
