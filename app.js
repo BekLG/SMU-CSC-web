@@ -204,6 +204,7 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
 
 app.get("/admin/news", function (req, res) {
     // news and new-news adding form will be displayed for admin.
+    res.render("addNews")
 })
 
 app.post("/admin/news", upload.single('imageURL'), function (req, res) {
