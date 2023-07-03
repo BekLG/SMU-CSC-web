@@ -236,7 +236,7 @@ app.post("/admin/gallery", upload.single('image'), function (req, res) {
     })
 
     galleryImage.save();
-    res.redirect("/");
+    res.redirect("/admin");
 })
 
 
