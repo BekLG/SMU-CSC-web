@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-admin.css">
+    <link rel="stylesheet" href="../public/style-admin.css">
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -44,15 +44,23 @@
           <span class="dashboard">Dashboard</span>
         </div>
       </nav>
+
       <div class="home-content">
 
-      <form action="">
-        <div class="option">Add News</div>
-        <input type="text" name="title" id="" placeholder="title">
-        <textarea name="content" id="" cols="10" rows="4" placeholder="Content"></textarea>
-        Cover image:<br>
-        <input type="file">
-        <div class="button">
+        <form action="">
+          <div class="option">Add Event</div>
+          <input type="text" name="title" id="" placeholder="title">
+          Date & time:
+          <input type="datetime-local" name="datetime" id="">
+          <input type="text" name="venue" id="" placeholder="Venue">
+          <textarea name="content" id="" cols="10" rows="4" placeholder="Description"></textarea>
+          Registration Deadline: <input type="datetime-local" name="deadline">
+          <input type="text" name="link" placeholder="link">
+          Cover image:<br>
+          <input type="file">
+          <label for="requirement">Registration is required: </label>
+          <input type="checkbox" name="requirement" id=""><br>
+          <div class="button">
             <input type="submit" name="submit" id="" style="color: #fff;
             background: #0A2558;
             padding: 4px 12px;
@@ -65,11 +73,10 @@
             border-radius: 20px;
             padding: 10px;">
           </div>
-
-      </form>
-
-    </div>
-
+        </form>
+  
+      </div>
+  
       
     </section>
     <script>
