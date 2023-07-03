@@ -256,7 +256,13 @@ app.get("/admin/members", function (req, res) {
 
 app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
-    res.render("attendance")
+    Member.find({})
+    .then((foundMember) => {
+         res.render("attendance", { Member: foundMember, });
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 })
 
 app.post("/admin/attendance", function (req, res) {
@@ -269,27 +275,43 @@ app.post("/admin/attendance", function (req, res) {
         attendanceType: req.body.attendanceType
       };
       
-      //var attendedMembers[]= req.body.attended;
-      var attendedMembers=["649bfc96cf1849039dab4a09", "649bfcf5c1361eb52f24cb70"];
-
-
-      attendedMembers.forEach(function(attendedMember){
+      const attendedMembers = req.body.attended;
+     
+    
+      if(Array.isArray(attendedMembers)===true)
+      {
+        
+      attendedMembers.forEach((attendedMember) => {
 
         var query = { _id: attendedMember };
         Member.findOneAndUpdate(query, {
           $push: { attendances: attendance }
         })
           .then(() => {
-           // res.redirect("/");
            console.log(attendedMember);
           })
           .catch((err) => {
             console.log(err);
           });
-
-      })
+        
+      });
       
-        res.redirect("/admin");   
+        res.redirect("/admin");
+      }
+      else{
+        //only one member is attended, so it can not be performed by forEach. we will handle it solely
+        var query = { _id: attendedMembers };
+        Member.findOneAndUpdate(query, {
+          $push: { attendances: attendance }
+        })
+          .then(() => {
+            res.redirect("/admin");
+          })
+          .catch((err) => {
+            console.log(err);
+          });        
+      }
+         
 })
 
 

@@ -47,30 +47,22 @@
 
       <div class="home-content">
         <div class="option">Attendance</div>
-        <input type="text" name="title" placeholder="Title" style="width: 60%;">
-        <input type="text" name="type" placeholder="Type" style="width: 60%;"><br>
+        <form action="/admin/attendance" method="post">
+          <input type="text" name="title" placeholder="Title" style="width: 60%;">
+        <input type="text" name="attendanceType" placeholder="Type" style="width: 60%;"><br>
         <table>
             <tr>
                 <th>Name</th>
                 <th>Check</th>
             </tr>
-            <tr>
-            <td><label for="Liya">Liya Habtemariam</label></td>
-            <td><input type="checkbox" name="Liya"></td>
-            </tr>
-            <tr>
-                <td><label for="Bereket">Bereket Legesse</label></td>
-                <td><input type="checkbox" name="Bereket"></td>
-            </tr>
-            <tr>
-                <td><label for="Liya">Liya Habtemariam</label></td>
-                <td><input type="checkbox" name="Liya"></td>
-            </tr>
-            <tr>
-                <td><label for="Bereket">Bereket Legesse</label></td>
-                <td><input type="checkbox" name="Bereket"></td>
-            </tr>
-        </table>
+            <%Member.forEach(function(member){ %>
+
+              <tr>
+              <td><label for="Liya"><%=member.firstName%> <%=member.lastName%></label></td>
+              <td><input type="checkbox" name="attended" value="<%=member._id%>"></td>
+              </tr>
+
+            <%})%>
 
         <div class="button">
             <input type="submit" name="submit" id="" style="color: #fff;
@@ -85,7 +77,9 @@
             border-radius: 20px;
             padding: 10px;">
           </div>
-  
+
+        </form>
+          
       </div>
   
       
