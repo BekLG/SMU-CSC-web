@@ -207,7 +207,7 @@ app.get("/admin/news", function (req, res) {
     res.render("addNews")
 })
 
-app.post("/admin/news", upload.single('imageURL'), function (req, res) {
+app.post("/admin/news", upload.single('image'), function (req, res) {
     // new-news will be saved on database .
 
     const currentDate = new Date();
@@ -220,10 +220,10 @@ app.post("/admin/news", upload.single('imageURL'), function (req, res) {
     })
 
     news.save();
-    res.redirect("/");
+    res.redirect("/admin");
 })
 
-app.post("/admin/gallery", upload.single('imageURL'), function (req, res) {
+app.post("/admin/gallery", upload.single('image'), function (req, res) {
     // new photos-path and caption will be saved on database.
     const galleryImage = new GalleryImage({
         caption: req.body.caption,

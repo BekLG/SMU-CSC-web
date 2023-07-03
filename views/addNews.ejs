@@ -46,12 +46,12 @@
       </nav>
       <div class="home-content">
 
-      <form action="">
+      <form action="/admin/news" method="post" enctype="multipart/form-data">
         <div class="option">Add News</div>
         <input type="text" name="title" id="" placeholder="title">
         <textarea name="content" id="" cols="10" rows="4" placeholder="Content"></textarea>
         Cover image:<br>
-        <input type="file">
+        <input type="file" name="image">
         <div class="button">
             <input type="submit" name="submit" id="" style="color: #fff;
             background: #0A2558;
