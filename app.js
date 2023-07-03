@@ -242,6 +242,7 @@ app.post("/admin/gallery", upload.single('image'), function (req, res) {
 
 app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
+    res.render("attendance")
 })
 
 app.post("/admin/attendance", function (req, res) {
