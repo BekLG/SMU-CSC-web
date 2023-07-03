@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/style-admin.css">
+    <link rel="stylesheet" href="css/style-admin.css">
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,7 +17,7 @@
       </div>
         <ul class="nav-links">
           <li>
-            <a href="index-admin.html" class="active">
+            <a href="index-admin.html">
                 <i class="fa fa-bars" aria-hidden="true"></i>
               <span class="links_name">Dashboard</span>
             </a>
@@ -29,7 +29,7 @@
             </a>
           </li>
           <li>
-            <a href="attendance.html">
+            <a href="attendance.html" class="active">
                 <i class="fa fa-check" aria-hidden="true"></i>
               <span class="links_name">Attendance</span>
             </a>
@@ -41,17 +41,37 @@
       <nav>
         <div class="sidebar-button">
           <i class='bx bx-menu sidebarBtn'></i>
-          <span class="dashboard">Dashboard</span>
+          <span class="dashboard">Attendance</span>
         </div>
       </nav>
-      <div class="home-content">
 
-      <form action="">
-        <div class="option">Add News</div>
-        <input type="text" name="title" id="" placeholder="title">
-        <textarea name="content" id="" cols="10" rows="4" placeholder="Content"></textarea>
-        Cover image:<br>
-        <input type="file">
+      <div class="home-content">
+        <div class="option">Attendance</div>
+        <input type="text" name="title" placeholder="Title" style="width: 60%;">
+        <input type="text" name="type" placeholder="Type" style="width: 60%;"><br>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Check</th>
+            </tr>
+            <tr>
+            <td><label for="Liya">Liya Habtemariam</label></td>
+            <td><input type="checkbox" name="Liya"></td>
+            </tr>
+            <tr>
+                <td><label for="Bereket">Bereket Legesse</label></td>
+                <td><input type="checkbox" name="Bereket"></td>
+            </tr>
+            <tr>
+                <td><label for="Liya">Liya Habtemariam</label></td>
+                <td><input type="checkbox" name="Liya"></td>
+            </tr>
+            <tr>
+                <td><label for="Bereket">Bereket Legesse</label></td>
+                <td><input type="checkbox" name="Bereket"></td>
+            </tr>
+        </table>
+
         <div class="button">
             <input type="submit" name="submit" id="" style="color: #fff;
             background: #0A2558;
@@ -65,11 +85,9 @@
             border-radius: 20px;
             padding: 10px;">
           </div>
-
-      </form>
-
-    </div>
-
+  
+      </div>
+  
       
     </section>
     <script>

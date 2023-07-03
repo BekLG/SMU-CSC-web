@@ -165,11 +165,12 @@ app.post("/login", function (req, res) {
 
 app.get("/admin", function (req, res) {
     // admin will be authenticated and admins page will be displayed.
-    res.send("admin page");
+    res.render("admin")
 })
 
 app.get("/admin/events", function (req, res) {
     // events and new-event adding form will be displayed for admin.
+    res.render("addEvent")
 })
 
 app.post("/admin/events", function (req, res) {
