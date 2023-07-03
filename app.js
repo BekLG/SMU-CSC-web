@@ -239,6 +239,11 @@ app.post("/admin/gallery", upload.single('image'), function (req, res) {
     res.redirect("/admin");
 })
 
+app.get("/admin/members", function (req, res) {
+    //  members list will be rendered
+    res.render("members")
+})
+
 
 app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
