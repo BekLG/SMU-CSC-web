@@ -17,6 +17,7 @@ const News = require("./modules/news")
 const GalleryImage = require("./modules/galleryImage")
 const upload = require('./modules/multerMiddleware')
 const Admin = require('./modules/admin')
+const Comment = require('./modules/comment')
 
 
 const app = express();
@@ -107,6 +108,20 @@ app.get("/gallery", function (req, res) {
         .catch((err) => {
             console.log(err);
         })
+})
+
+app.post("/comment", function(req,res){
+    //a comment from user will be saved on db
+    const commnet = new Comment({
+
+        name: req.body.name,
+        email: req.body.email,
+        comment: req.body.comment
+   
+    })
+
+    commnet.save();
+    res.redirect("/");
 })
 
 app.get("/login", function (req, res) {
