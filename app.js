@@ -223,6 +223,11 @@ app.post("/admin/news", upload.single('image'), function (req, res) {
     res.redirect("/admin");
 })
 
+app.get("/admin/gallery", function (req, res) {
+    // image adding form will be displayed for admin.
+    res.render("addPhoto")
+})
+
 app.post("/admin/gallery", upload.single('image'), function (req, res) {
     // new photos-path and caption will be saved on database.
     const galleryImage = new GalleryImage({
