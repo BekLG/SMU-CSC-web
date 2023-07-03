@@ -57,29 +57,18 @@
                 <th>Phone number</th>
             </tr>
 
-            <tr>
-            <td>Liya Habtemariam</td>
-            <td>RCD/4289/2013</td>
-            <td>M</td>
-            <td>F</td>
-            <td>0961144982</td>
-            </tr>
+            <%Member.forEach(function(member){ %>
 
-            <tr>
-                <td>Liya Habtemariam</td>
-                <td>RCD/4289/2013</td>
-                <td>M</td>
-                <td>F</td>
-                <td>0961144982</td>
+              <tr>
+                <td><%=member.firstName%> <%=member.lastName%></td>
+                <td><%=member.schoolId%></td>
+                <td><%=member.section%></td>
+                <td><%=member.gender%></td>
+                <td><%=member.phoneNumber%></td>
                 </tr>
 
-                <tr>
-                    <td>Liya Habtemariam</td>
-                    <td>RCD/4289/2013</td>
-                    <td>M</td>
-                    <td>F</td>
-                    <td>0961144982</td>
-                    </tr>
+            <%})%>
+           
             
         </table>
       

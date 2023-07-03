@@ -241,7 +241,16 @@ app.post("/admin/gallery", upload.single('image'), function (req, res) {
 
 app.get("/admin/members", function (req, res) {
     //  members list will be rendered
-    res.render("members")
+
+    Member.find({})
+    .then((foundMember) => {
+         res.render("members", { Member: foundMember, });
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
+    
 })
 
 
