@@ -165,7 +165,25 @@ app.post("/login", function (req, res) {
 
 app.get("/admin", function (req, res) {
     // admin will be authenticated and admins page will be displayed.
-    res.render("admin")
+
+
+    Event.find({}).limit(3)
+        .then((foundEvent) => {
+
+            News.find({}).limit(3)
+            .then((foundNews) => {
+                res.render("admin", { News: foundNews, Event: foundEvent });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            
+
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
 })
 
 app.get("/admin/events", function (req, res) {
@@ -253,10 +271,9 @@ app.get("/admin/members", function (req, res) {
     
 })
 
-
 app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
-    Member.find({})
+    Member.find({}).sort({ firstName: 1, lastName: 1 })
     .then((foundMember) => {
          res.render("attendance", { Member: foundMember, });
     })

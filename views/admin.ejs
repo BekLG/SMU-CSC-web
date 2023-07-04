@@ -96,54 +96,58 @@
             <div class="events-details">
               <ul class="details">
                 <li class="topic">Title</li>
-                <li><a href="#">Git/Github training</a></li>
-                <li><a href="#">Cybersecurity</a></li>
-                <li><a href="#">Introduction to AI</a></li>
+                <li><a href=""><%=Event[0].title%></a></li>
+                <li><a href=""><%=Event[1].title%></a></li>
+                <li><a href=""><%=Event[2].title%></a></li>
               </ul>
               <ul class="details">
               <li class="topic">Date</li>
-              <li><a href="#">02, jul 2023</a></li>
-              <li><a href="#">02, jul 2023</a></li>
-              <li><a href="#">02, jul 2023</a></li>
+              <li><a href=""><%=Event[0].dateAndTime.toDateString()%></a></li>
+              <li><a href=""><%=Event[1].dateAndTime.toDateString()%></a></li>
+              <li><a href=""><%=Event[2].dateAndTime.toDateString()%></a></li>
+
             </ul>
             <ul class="details">
               <li class="topic">Time</li>
-              <li><a href="#">12:00LT</a></li>
-              <li><a href="#">12:00LT</a></li>
-              <li><a href="#">12:00LT</a></li>
+              <% Event.forEach(function(Event){ %>
+
+                <% var hours = Event.dateAndTime.getHours(); %>
+                <% var meridiem = hours >= 12 ? 'PM' : 'AM'; %>
+                <% hours = hours % 12 || 12; // Convert to 12-hour format %>
+                <% var minutes = Event.dateAndTime.getMinutes(); %>
+                <% var formattedTime = hours + ':' + minutes + ' ' + meridiem; %>
+
+              <li><a href=""><%=formattedTime%></a></li>
+
+              <% }) %>
+  
             </ul>
             <ul class="details">
               <li class="topic">Venue</li>
-              <li><a href="#">Multipurpose</a></li>
-              <li><a href="#">Multipurpose</a></li>
-              <li><a href="#">Multipurpose</a></li>
+              <li><a href=""><%=Event[0].venue%></a></li>
+              <li><a href=""><%=Event[1].venue%></a></li>
+              <li><a href=""><%=Event[2].venue%></a></li>
+
             </ul>
             </div>
-            <div class="button">
+            <!-- <div class="button">
               <a href="#">See All</a>
-            </div>
+            </div> -->
           </div>
           <div class="top-events box">
             <div class="title">Recent News</div>
             <ul class="top-events-details">
-              <li>
-              <a href="#">
-                <span class="product">Meeting announcement</span>
-              </a>
-              <span class="price">05, jul 2023</span>
-            </li>
-            <li>
-              <a href="#">
-                <span class="product">Meeting announcement</span>
-              </a>
-              <span class="price">05, jul 2023</span>
-            </li>
-            <li>
-              <a href="#">
-                <span class="product">Meeting announcement</span>
-              </a>
-              <span class="price">05, jul 2023</span>
-            </li>
+              <% News.forEach(function(news){ %>
+
+                <li>
+                  <a href="">
+                    <span class="product"><%=news.title%></span>
+                  </a>
+                  <span class="price"><%=news.date.toDateString()%></span>
+                </li>
+
+              <% }) %>
+             
             </ul>
           </div>
         </div>
