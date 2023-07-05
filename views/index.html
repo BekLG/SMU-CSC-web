@@ -1,383 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Splide css-->
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <!--Custom css-->
+    <link rel="stylesheet" href="../public/css/style.css"/>
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>smu_csc_club</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-            <div class="container">
-              <img class="navbar-brand" src="images/logo3.jpg">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:blue;">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="news.html">News</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="events.html">Events</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="gallery.html">Gallery</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">About</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="aboutus.html">About us</a></li>
-                      <li><a class="dropdown-item" href="contact.html">Contact</a></li>
-                      <li><a class="dropdown-item" href="getinvolved.html">Get involved</a></li>
-                      
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#popup" style="background-color: #2a2a62; color: white; width: fit-content; border-radius: 25px; padding: 0px, 15px;">Register</a>
-                  </li>
-                </ul>
-              </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>SMU-CSC</title>
+  </head>
+  <body>
+    <main>
+      <div class="big-wrapper light">
+        <img src="images/shape.png" alt="" class="shape" />
+
+        <header class="fixed-top">
+          <div class="container fixed-top">
+            <div class="logo">
+              <h3>SMU-CSC</h3>
             </div>
-          </nav>
 
+            <div class="links">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="registration.html" class="btn">Register</a></li>
+              </ul>
+            </div>
 
-          <div class="overlay" id="popup">
-            <div class="wrapper">
-              <h2>Register</h2>
-              <a href="#" class="close">&times;</a>
-              <div class="content">
-                <div class="form-container">
-                  <form action="">
-                    <input type="text" name="firstName" placeholder="First Name">
-                    <input type="text" name="lastName" placeholder="Last Name">
-                    <label>Gender</label>
-                    <input type="radio" name="gender" id="male" value="male">
-                    <label for="male" class="selection">Male</label>
-                    <input type="radio" name="gender" id="male" value="female">
-                    <label for="female" class="selection">Female</label><br>
-                    <input type="text" name="schoolId" placeholder="ID">
-                    <input type="text" name="section" placeholder="Section">
-                    <input type="email" name="email" placeholder="Email">
-                    <input type="tel" name="phoneNumber" placeholder="Phone Number"><br>
+            <div class="overlay"></div>
 
-                    <label for="skillLevel">Interest</label><br>
-                    <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
-                    <label for="skillLevel" class="selection">Programming</label><br>
-                    <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
-                    <label for="skillLevel" class="selection">Artificial Intelligence</label><br>
-                    <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
-                    <label for="skillLevel" class="selection">Cybersecurity</label><br>
-                    <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
-                    <label for="skillLevel" class="selection">Web Development</label><br>
-                    <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
-                    <label for="skillLevel" class="selection">Data science</label><br><br>
-
-                    <label for="interest">Your skill level at your most preffered interest is:</label>
-                    <select name="interest" id="interest">
-                      <option value="programming">Beginner</option>
-                      <option value="programming">Intermediate</option>
-                      <option value="programming">Advanced</option>
-                      </select><br><br>
-
-                    <input type="submit" name="submit">
-
-                  </form>
-                </div>
-              </div>
+            <div class="hamburger-menu">
+              <div class="bar"></div>
             </div>
           </div>
-        
-
-        <section class="welcome">
-            <div class="container">
-                <h1>SMU Computer Science Club</h1>
-                <p>Innovate, Create, Code!</p>
+        </header>
+        <div class="showcase-area">
+          <div class="container">
+            <div class="left">
+              <div class="big-title">
+                <h1>St. Mary's CS Club</h1>
+                <h1>Innovate, Create, Code!</h1>
               </div>
-
-        </section>
-
-    </header>
-
-    <section class="info">
-        
-
-            <main class="updates">
-                <h2>News & updates</h2>
-                <P>See past Events <a href="#">here</a></P>
-
-                <div class="cards">
-                    <div class="card">
-                        <div class="image"><img src="images/git.jpg" alt=""></div>
-                         <div class="content">
-                           <a href="#">
-                             <span class="title">
-                               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                             </span>
-                           </a>
-                       
-                           <p class="desc">
-                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                             dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                           </p>
-                       
-                           <a href="#" class="action">
-                             Find out more
-                             <span aria-hidden="true">
-                               →
-                             </span>
-                           </a>
-                         </div>
-                       </div>
-    
-                       <div class="card">
-                        <div class="image"><img src="images/cyber.jpg" alt=""></div>
-                         <div class="content">
-                           <a href="#">
-                             <span class="title">
-                               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                             </span>
-                           </a>
-                       
-                           <p class="desc">
-                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                             dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                           </p>
-                       
-                           <a href="#" class="action">
-                             Find out more
-                             <span aria-hidden="true">
-                               →
-                             </span>
-                           </a>
-                         </div>
-                       </div>
-    
-                       <div class="card">
-                        <div class="image"><img src="images/AI.jpg" alt=""></div>
-                         <div class="content">
-                           <a href="#">
-                             <span class="title">
-                               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                             </span>
-                           </a>
-                       
-                           <p class="desc">
-                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                             dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                           </p>
-                       
-                           <a href="#" class="action">
-                             Find out more
-                             <span aria-hidden="true">
-                               →
-                             </span>
-                           </a>
-                         </div>
-                       </div>
-
-
-                </div>
-
-            </main>
-
-            <aside class="photos">
-                <h2>Recent photos</h2>
-                <p class="par1">See past photos <a href="#">here</a></p>
-
-                <div class="images">
-                    <div class="img_wrap">
-                        <img src="images/photo1.jpg" alt="" class="img_img">
-                        <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                    </div>
-
-                    <div class="img_wrap">
-                        <img src="images/photo2.jpg" alt="" class="img_img">
-                        <p class="img_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, laborum?</p>
-
-                    </div>
-                </div>
-            </aside>
-            </div>
-    </section>
-
-    <div class="clear"></div>
-
-    <section class="about-us">
-      <div class="about">
-        <div class="row">
-          <div class="col-md-4">
-        <img src="images/us.jpg" class="pic">
-        </div>
-        <div class="col-md-8">
-          <div class="text">
-            <h2>About Us</h2>
-            <h5>St. Mary's Computer Science club</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
-            <div class="data">
-            <a href="#" class="learnmore">Learn more</a>
-            </div>
-  
-        </div>
-        
-        </div>
-      </div>
-    </section>
-
-<section class="testimonial">
-    <div class="testimonials text-center">
-
-        <div class="container">
-          <h3>Recent Comments</h3>
-          <div class="row">
-            <div class="col-md-6 col-lg-4">
-              <div class="card border-light bg-light text-center">
-                <i class="fa fa-quote-left fa-3x card-img-top rounded-circle" aria-hidden="true"></i>
-                <div class="card-body blockquote">
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum enim eu nibh finibus</p>
-                  <footer class="blockquote-footer"><cite title="Source Title">Selam H.</cite></footer>
-                </div>
+              <p class="text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Delectus eius distinctio odit, magni magnam qui ex perferendis
+                vitae!
+              </p>
+              <div class="cta">
+                <a href="#" class="btn">Get started</a>
               </div>
             </div>
-    
-            <div class="col-md-6 col-lg-4">
-              <div class="card border-light bg-light text-center">
-                <i class="fa fa-quote-left fa-3x card-img-top rounded-circle" aria-hidden="true"></i>
-                <div class="card-body blockquote">
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum enim eu nibh finibus</p>
-                  <footer class="blockquote-footer"><cite title="Source Title">Delina H.</cite></footer>
-                </div>
-              </div>
+
+            <div class="right">
+              <img src="images/person.png" alt="Person Image" class="person" />
             </div>
-    
-            <div class="col-md-6 col-lg-4">
-              <div class="card border-light bg-light text-center">
-                <i class="fa fa-quote-left fa-3x card-img-top rounded-circle" aria-hidden="true"></i>
-                <div class="card-body blockquote">
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum enim eu nibh finibus</p>
-                  <footer class="blockquote-footer"><cite title="Source Title">Bemnet G.</cite></footer>
-                </div>
-              </div>
-            </div>
-    
           </div>
         </div>
-    
+
+        <div class="bottom-area">
+          <div class="container">
+            <button class="toggle-btn mode">
+              <i class="far fa-moon"></i>
+              <i class="far fa-sun"></i>
+            </button>
+          </div>
+        </div>
       </div>
+    </main>
+
+<section class="goals">
+  <div class="goals-container">
+    <div class="row">
+    <div class="col-lg-3 col-sm-6 g-4"><div class="goal"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Learn</div></div> 
+    <div class="col-lg-3 col-sm-6 g-4"><div class="goal"><i class="fa fa-users" aria-hidden="true"></i>Network</div></div> 
+    <div class="col-lg-3 col-sm-6 g-4"><div class="goal"><i class="fa fa-code" aria-hidden="true"></i>Code</div></div> 
+    <div class="col-lg-3 col-sm-6 g-4"><div class="goal"><i class="fa fa-search" aria-hidden="true"></i>Explore</div></div> 
+  </div>
+  </div>
 </section>
 
+<section class="about-us">
+  <div class="about">
+    <div class="row">
+      <div class="col-md-4">
+    <img src="images/us.jpg" class="pic">
+    </div>
+    <div class="col-md-8">
+      <div class="text">
+        <h2>About Us</h2>
+        <h5>St. Mary's Computer Science club</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
+        <div class="data">
+        <a href="#" class="learnmore">Learn more</a>
+        </div>
 
-  <section class="contact-us">
-    <div class="container_contact">
-        <div class="content">
-          <div class="left-side">
-            <div class="address details">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <div class="topic">Address</div>
-              <div class="text-one">St Mary's University</div>
-              <div class="text-two">Shebelle Campus, No. 65</div>
-            </div>
-            <div class="phone details">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <div class="topic">Phone</div>
-              <div class="text-one">+2519935647</div>
-              <div class="text-two">+2518676868</div>
-            </div>
-            <div class="email details">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              <div class="topic">Email</div>
-              <div class="text-one">smucsc@gmail.com</div>
-              <div class="text-one">cscoffice@gmail.com</div>
-            </div>
-          </div>
-          <div class="right-side">
-            <div class="topic-text">Send us a message</div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis libero optio laborum itaque eum aliquam, inventore delectus quam harum.</p>
-          <form action="#">
-            <div class="input-box">
-              <input type="text" placeholder="Enter your name">
-            </div>
-            <div class="input-box">
-              <input type="text" placeholder="Enter your email">
-            </div>
-            <div class="input-box message-box">
-              <textarea name="message" id="msg" cols="30" rows="10" placeholder="Comment"></textarea>
-            </div>
-            <div class="button">
-              <input type="button" value="Send" >
-            </div>
-          </form>
-        </div>
+    </div>
+    
+    </div>
+  </div>
+</section>
+
+<section class="splide">
+  <div class="text">
+    <h2>Take a Look...</h2>
+  </div>
+  <div class="splide__track">
+    <div class="splide__list">
+      <div class="splide__slide">
+        <div class="img_box">
+          <img src="images/photo1.jpg" alt="">
         </div>
       </div>
-    </section> 
-   
-    <section id="footer">
-      <div class="container">
-        <div class="row text-center text-xs-center text-sm-left text-md-left">
-          <div class="col-xs-12 col-sm-4 col-md-4">
-            <h5>Quick links</h5>
-            <ul class="list-unstyled quick-links">
-              <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Home</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-              
-            </ul>
+      <div class="splide__slide">
+        <div class="img_box">
+          <img src="images/photo2.jpg" alt="">
+        </div>
+      </div>
+      <div class="splide__slide">
+        <div class="img_box">
+          <img src="images/us.jpg" alt="">
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</section>
+
+<section class="contact-us">
+  <div class="container_contact">
+      <div class="content">
+        <div class="left-side">
+          <div class="address details">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <div class="topic">Address</div>
+            <div class="text-one">St Mary's University</div>
+            <div class="text-two">Shebelle Campus, No. 65</div>
           </div>
-          <div class="col-xs-12 col-sm-4 col-md-4">
-            <h5>Quick links</h5>
-            <ul class="list-unstyled quick-links">
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-              
-            </ul>
+          <div class="phone details">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <div class="topic">Phone</div>
+            <div class="text-one">+2519935647</div>
+            <div class="text-two">+2518676868</div>
           </div>
-          <div class="col-xs-12 col-sm-4 col-md-4">
-            <h5>Quick links</h5>
-            <ul class="list-unstyled quick-links">
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-              
-            </ul>
+          <div class="email details">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <div class="topic">Email</div>
+            <div class="text-one">smucsc@gmail.com</div>
+            <div class="text-one">cscoffice@gmail.com</div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-            <ul class="list-unstyled list-inline social text-center">
-              <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-              <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
-            </ul>
+        <div class="right-side">
+          <div class="topic-text">Send us a message</div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic perspiciatis libero optio laborum itaque eum aliquam, inventore delectus quam harum.</p>
+        <form action="#">
+          <div class="input-box">
+            <input type="text" placeholder="Enter your name">
           </div>
-          </hr>
-        </div>  
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-            <p><u>St. Mary's Computer Science Club</u></p>
-            <p class="h6">&copy All right Reserved.</p>
+          <div class="input-box">
+            <input type="text" placeholder="Enter your email">
           </div>
-          </hr>
-        </div>  
+          <div class="input-box message-box">
+            <textarea name="message" id="msg" cols="30" rows="10" placeholder="Comment"></textarea>
+          </div>
+          <div class="button">
+            <input type="button" value="Send" >
+          </div>
+        </form>
       </div>
-   </section>
-    
-    
-</body>
+      </div>
+    </div>
+  </section> 
+ 
+  <section id="footer">
+    <div class="container">
+      <div class="row text-center text-xs-center text-sm-left text-md-left">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Quick links</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Home</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+            
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Quick links</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+            
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Quick links</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+            
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+          <ul class="list-unstyled list-inline social text-center">
+            <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        </hr>
+      </div>  
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+          <p><u>St. Mary's Computer Science Club</u></p>
+          <p class="h6">&copy All right Reserved.</p>
+        </div>
+        </hr>
+      </div>  
+    </div>
+ </section>
+
+
+
+
+<!--JS-->    
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="../public/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script type="text/javascript">
+      var splide = new Splide( '.splide', {
+  perPage: 3,
+  perMove: 1,
+  gap    : '1.5rem',
+  padding: '3rem',
+  type: 'loop',
+  drag: 'free',
+  snap: 'true',
+  arows: 'true',
+  pagination: 'false',
+  autoplay: 'true',
+  breakpoints: {
+    1000: {
+      perPage: 2,
+      gap    : '.7rem',
+      padding: '1.5rem',
+    },
+    650: {
+      perPage: 1,
+      gap    : '.7rem',
+      padding: '1.5rem',
+    },
+  },
+} );
+
+splide.mount();
+    </script>
+  </body>
 </html>
