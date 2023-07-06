@@ -2,8 +2,46 @@
 <html>
 <head>
   <title>St. Mary's University Computer Science Club Terms and Conditions</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+    .scroll{
+width: 60%;
+height: 90vh;
+margin: auto;
+font-family: "Poppins", sans-serif;
+border: 2px solid lightgray;
+padding: 2rem;
+margin-top: 1rem;
+overflow:auto;
+    }
+    h1{
+      color: #2a2a62;
+      font-size: 1.8rem;
+    }
+    h2,h3{
+      color: #2a2a62;
+      font-size: 1.7rem;
+    }
+    button{
+      padding: .5rem;
+      margin: .5rem;
+      width: 80px;
+      border-radius: 5px;
+    }
+
+    @media screen and (max-width:920px){
+   h1,h2,h3{
+    font-size: 1.5rem;
+    }
+    .scroll{
+      width: 80%;
+    }
+}
+
+  </style>
 </head>
 <body>
+  <div class="scroll">
   <h1>St. Mary's University Computer Science Club Terms and Conditions</h1>
 
   <p>Please read the following terms and conditions carefully before registering for the St. Mary's University Computer Science Club. By registering, you acknowledge that you have read, understood, and agree to comply with these terms.</p>
@@ -37,5 +75,21 @@
   <p>By registering for the St. Mary's University Computer Science Club, you agree to adhere to these terms and conditions. The club reserves the right to modify these terms as necessary, and any changes will be communicated to members. Failure to comply with these terms may result in disciplinary action, including revocation of membership privileges.</p>
 
   <p>If you have any questions or concerns regarding these terms, please contact the club administration for clarification.</p>
+  <input type="checkbox" name="agreement" id="check" onclick="enable()"> I agree to the terms and conditions.
+  <a href="registration.html"><button id="btn" disabled="true">Next</button></a>
+</div>
+<script>
+  function enable(){
+  var check = document.getElementById("check");
+  var btn = document.getElementById("btn");
+  if(check.checked){
+    btn.removeAttribute("disabled")
+  }else{
+    btn.disabled = "true";
+  }
+  
+  }
+  
+</script>
 </body>
 </html>
