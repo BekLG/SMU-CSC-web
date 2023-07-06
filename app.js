@@ -39,7 +39,7 @@ mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
 
 app.get("/", function (req, res) {
     // home page will be displayed
-    res.send("home page");
+    res.render("index");
 })
 
 app.get("/newMembership", function (req, res) {
