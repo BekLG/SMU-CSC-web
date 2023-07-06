@@ -131,4 +131,4 @@ dist
 
 #local folder that stores images
 
-/uploads/images/
+public/uploads/images/
