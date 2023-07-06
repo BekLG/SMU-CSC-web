@@ -39,7 +39,14 @@ mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
 
 app.get("/", function (req, res) {
     // home page will be displayed
-    res.render("index");
+    GalleryImage.aggregate([{ $sample: { size: 5 } }])  //pick 5 images randomly from gallery.
+    .then((foundImage) => {
+         res.render("index", { Images: foundImage });
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
 })
 
 app.get("/newMembership", function (req, res) {

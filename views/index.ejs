@@ -115,22 +115,14 @@
   </div>
   <div class="splide__track">
     <div class="splide__list">
+      <%Images.forEach(function(image){%>
       <div class="splide__slide">
         <div class="img_box">
-          <img src="images/photo1.jpg" alt="">
+          <img src="<%=image.imageURL%>" alt="<%=image.caption%>">
         </div>
       </div>
-      <div class="splide__slide">
-        <div class="img_box">
-          <img src="images/photo2.jpg" alt="">
-        </div>
-      </div>
-      <div class="splide__slide">
-        <div class="img_box">
-          <img src="images/us.jpg" alt="">
-        </div>
-      </div>
-      
+    
+      <% }) %>
 
     </div>
   </div>
