@@ -49,8 +49,14 @@ app.get("/", function (req, res) {
 
 })
 
+app.get("/termsAndConditions", function (req, res) {
+    // terms and conditions page will be displayed.
+    res.render("termsAndConditions");
+})
+
 app.get("/newMembership", function (req, res) {
     // new membership registration page will be displayed.
+    res.render("registration");
 })
 
 app.post("/newMembership", function (req, res) {
