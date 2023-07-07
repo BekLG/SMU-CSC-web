@@ -78,8 +78,7 @@ app.get("/news", function (req, res) {
 
     News.find({})
         .then((foundNews) => {
-            // res.render("news", { News: foundNews, });
-            res.send(foundNews);
+             res.render("news", { News: foundNews, });
 
         })
         .catch((err) => {
