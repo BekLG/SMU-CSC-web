@@ -93,9 +93,8 @@ app.get("/events", function (req, res) {
 
     Event.find({})
         .then((foundEvent) => {
-            // res.render("events", { Event: foundEvent, });
-            res.send(foundEvent);
-
+             res.render("events", { Events: foundEvent, });
+            
         })
         .catch((err) => {
             console.log(err);
