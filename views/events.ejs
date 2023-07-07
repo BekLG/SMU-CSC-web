@@ -50,29 +50,53 @@
 
               <div class="eventscard-container">
               
-                  
-                  
+                <% Events.forEach(function(event){ %>
+
                   <div class="eventscard eventscard-blue">
-                      <div class="eventscard-innerbox">
-                          <img class="eventscard-img" src="images/AI.jpg" />
-                          <div class="eventscard-textbox">
-                              <div class="eventscard-title">Event Title</div>
-                              <div class="eventscard-subtitle">Event Description</div>
-                              <div class="eventscard-bar"></div>
-                              <div class="eventscard-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-                                  <p>Register <a href="">Here</a></p>
-                              </div><br>
-                              <div class="eventscard-tagbox">
-                                  <span class="eventscard-tag"><i class="fa fa-calendar-o" aria-hidden="true"></i> jan 30, 2023</span>
-                                  <span class="eventscard-tag"><i class="fa fa-clock-o" aria-hidden="true"></i> 4:00LT</span>
-                                  <span class="eventscard-tag"><i class="fa fa-map-marker" aria-hidden="true"></i> Multipurpose</span>
+                    <div class="eventscard-innerbox">
+                        <img class="eventscard-img" src="<%=event.imageURL%>" />
+                        <div class="eventscard-textbox">
+                            <div class="eventscard-title"><%=event.title%></div>
+                            <!-- <div class="eventscard-subtitle">Event </div> -->
+                            <div class="eventscard-bar"></div> <%=event.description%>
+
+                            <%if(event.registrationRequired === true){%>
+                              <div class="eventscard-description"> 
+                                <p>Register <a href="<%=event.registrationLink%>"> Here</a></p>
                               </div>
-                          </div>
+                            <% } %>
+
+                            
+                            <br>
+                            <div class="eventscard-tagbox">
+                                <span class="eventscard-tag"><i class="fa fa-calendar-o" aria-hidden="true"></i> <%=event.dateAndTime.toDateString()%> </span>
+
+                                <% var hours = event.dateAndTime.getHours(); %>
+                                <% var meridiem = hours >= 12 ? 'PM' : 'AM'; %>
+                                <% hours = hours % 12 || 12; // Convert to 12-hour format %>
+                                <% var minutes = event.dateAndTime.getMinutes(); %>
+                                <% var formattedTime = hours + ':' + minutes + ' ' + meridiem; %>
+
+                                <span class="eventscard-tag"><i class="fa fa-clock-o" aria-hidden="true"></i> <%=formattedTime %> </span>
+                                <span class="eventscard-tag"><i class="fa fa-map-marker" aria-hidden="true"></i> <%=event.venue%></span>
+                            </div>
+                        </div>
+                       
+
+                        <%if(event.registrationRequired=== true){%>
+
                           <div class="posted-date">
-                              <p>Posted on jul 1, 2023.</p>
+                            <p>Registration Deadline <%=event.registrationDeadline.toDateString()%></p>
                           </div>
-                      </div>
-                  </div>
+
+                          <% } %>
+                        
+                    </div>
+                </div>
+
+                <% }) %>
+                  
+                  
                   
                  
                   
@@ -148,7 +172,7 @@
         </div>
      </section>
      
-<script src="../public/js/app.js"></script> 
+<script src="js/app.js"></script> 
 </body>
 </html>
 
