@@ -26,11 +26,11 @@
 
           <div class="links">
             <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="news.html">News</a></li>
-              <li><a href="events.html">Events</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="termsAndConditions.html" class="btn">Register</a></li>
+              <li><a href="/index">Home</a></li>
+              <li><a href="/news">News</a></li>
+              <li><a href="/events">Events</a></li>
+              <li><a href="/gallery">Gallery</a></li>
+              <li><a href="/termsAndConditions" class="btn">Register</a></li>
             </ul>
           </div>
 
@@ -49,55 +49,18 @@
             <section class="gallery">
 
               <div class="image-container">
-      
-                  <a href="images/photo1.jpg" class="gallery-image exhibition">
-                      <div class="img_wrap">
-                          <img src="images/photo1.jpg" alt="" class="img_img">
-                          <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                      </div>
-                  </a>
-                  <a href="images/photo2.jpg" class="gallery-image workshop">
-                      <div class="img_wrap">
-                          <img src="images/photo2.jpg" alt="" class="img_img">
-                          <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                      </div>
-                  </a>
-                  <a href="images/photo3.jpg" class="gallery-image training">
-                      <div class="img_wrap">
-                          <img src="images/photo3.jpg" alt="" class="img_img">
-                          <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                      </div>
-                  </a>
-                  <a href="images/us.jpg" class="gallery-image exhibition">
-                      <div class="img_wrap">
-                          <img src="images/us.jpg" alt="" class="img_img">
-                          <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                      </div>
-                  </a>
-                  <a href="images/photo1.jpg" class="gallery-image exhibition">
-                    <div class="img_wrap">
-                        <img src="images/photo1.jpg" alt="" class="img_img">
-                        <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                    </div>
+
+               <% Images.forEach(function(image){ %>
+
+                <a href="<%=image.imageURL%>" class="gallery-image exhibition">
+                  <div class="img_wrap">
+                      <img src="<%=image.imageURL%>" alt="" class="img_img">
+                      <p class="img_description"><%=image.caption%></p>
+                  </div>
                 </a>
-                <a href="images/photo2.jpg" class="gallery-image workshop">
-                    <div class="img_wrap">
-                        <img src="images/photo2.jpg" alt="" class="img_img">
-                        <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                    </div>
-                </a>
-                <a href="images/photo3.jpg" class="gallery-image training">
-                    <div class="img_wrap">
-                        <img src="images/photo3.jpg" alt="" class="img_img">
-                        <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                    </div>
-                </a>
-                <a href="images/us.jpg" class="gallery-image exhibition">
-                    <div class="img_wrap">
-                        <img src="images/us.jpg" alt="" class="img_img">
-                        <p class="img_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos?</p>
-                    </div>
-                </a>
+
+               <% }) %>
+                  
                  
                   
               </div>
