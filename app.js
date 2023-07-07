@@ -304,8 +304,10 @@ app.get("/admin/members", function (req, res) {
 
 app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
-    Member.find({}).sort({ firstName: 1, lastName: 1 })
+    Member.find({})
     .then((foundMember) => {
+        foundMember.sort((a, b) => a.firstName.localeCompare(b.firstName));
+
          res.render("attendance", { Member: foundMember, });
     })
     .catch((err) => {
