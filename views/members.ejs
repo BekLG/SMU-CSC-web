@@ -17,13 +17,13 @@
     </div>
       <ul class="nav-links">
         <li>
-          <a href="/admin" class="active">
+          <a href="/admin">
               <i class="fa fa-bars" aria-hidden="true"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="/admin/members">
+          <a href="/admin/members" class="active">
               <i class="fa fa-users" aria-hidden="true"></i>
             <span class="links_name">Members</span>
           </a>
@@ -52,9 +52,10 @@
             <tr>
                 <th>Name</th>
                 <th>ID</th>
-                <th>Section</th>
-                <th>Gender</th>
-                <th>Phone number</th>
+                <th class="col-section">Section</th>
+                <th class="col-gender">Gender</th>
+                <th class="col-phoneNumber">Phone number</th>
+                <th></th>
             </tr>
 
             <%Member.forEach(function(member){ %>
@@ -62,9 +63,10 @@
               <tr>
                 <td><%=member.firstName%> <%=member.lastName%></td>
                 <td><%=member.schoolId%></td>
-                <td><%=member.section%></td>
-                <td><%=member.gender%></td>
-                <td><%=member.phoneNumber%></td>
+                <td class="col-section"><%=member.section%></td>
+                <td class="col-gender"><%=member.gender%></td>
+                <td class="col-phoneNumber"><%=member.phoneNumber%></td>
+                <td><a href="memberDetails.html"><button>Details</button></a></td>
                 </tr>
 
             <%})%>
