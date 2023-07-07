@@ -150,7 +150,7 @@ table{
     margin: auto;
 }
 td,th{
-    
+  
     text-align: left;
     padding: 8px;
 }
@@ -159,6 +159,13 @@ tr:nth-child(even){
 }
 tr:nth-child(odd){
     background-color: rgb(229, 246, 252);
+}
+
+@media (max-width: 700px) {
+  .col-section, .col-gender, .col-phoneNumber{
+    display: none;
+  }
+  
 }
 
 .attendanceinput{
@@ -577,3 +584,83 @@ nav .profile-details i{
     color: #fff;
     margin-bottom: 15px ;
   }
+
+
+/*   member details   */
+
+.info-container{
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+.personal-info, .club-info{
+  border: 1px solid #082e75;
+  width: 48%;
+  min-height: 400px ;
+  margin: auto;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  letter-spacing: 1px;
+  padding: 0px 40px;
+}
+
+legend{
+  margin: 30px;
+  padding: 10px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  font-style: italic;
+}
+.info-container label{
+  font-size: 1.08rem;
+  margin-right: 5px;
+  color: #082e75;
+}
+.info-container .detail{
+  padding: 10px;
+}
+@media (max-width: 1000px) {
+  .info-container{
+    display: grid;
+  }
+  .personal-info, .club-info{
+    width: 80%;
+  }
+  
+}
+
+@media (max-width: 700px) {
+  .personal-info, .club-info{
+    width: 90%;
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
