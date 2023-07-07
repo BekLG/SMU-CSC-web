@@ -108,9 +108,7 @@ app.get("/gallery", function (req, res) {
 
     GalleryImage.find({})
         .then((foundImage) => {
-            // res.render("gallery", { Image: foundImage, });
-            res.send(foundImage);
-
+            res.render("gallery", { Images: foundImage, });
         })
         .catch((err) => {
             console.log(err);
