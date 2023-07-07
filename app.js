@@ -204,19 +204,41 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
 
     const registrationRequired = req.body.registrationRequired === "on";
 
-    const event = new Event({
+    console.log(registrationRequired);
 
-        title: req.body.title,
-        dateAndTime: dateAndTime,
-        venue: req.body.venue,
-        description: req.body.description,
-        registrationRequired: registrationRequired,
-        registrationDeadline: registrationDeadline,
-        registrationLink: req.body.registrationLink,
-        imageURL: "uploads/images/" + req.file.filename
-    })
+    if(registrationRequired=== true)
+    {
+        const event = new Event({
 
-    event.save();
+            title: req.body.title,
+            dateAndTime: dateAndTime,
+            venue: req.body.venue,
+            description: req.body.description,
+            registrationRequired: registrationRequired,
+            registrationDeadline: registrationDeadline,
+            registrationLink: req.body.registrationLink,
+            imageURL: "uploads/images/" + req.file.filename
+        })
+
+        event.save();
+    }
+
+    else
+    {
+        const event = new Event({
+
+            title: req.body.title,
+            dateAndTime: dateAndTime,
+            venue: req.body.venue,
+            description: req.body.description,
+            registrationRequired: registrationRequired,
+            imageURL: "uploads/images/" + req.file.filename
+        })
+
+        event.save();
+    }
+
+    
     res.redirect("/admin");
 
     // on the front-end if registrationRequired is false the registrationLink input have to be disabled
