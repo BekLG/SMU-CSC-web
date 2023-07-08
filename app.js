@@ -60,6 +60,7 @@ app.get("/newMembership", function (req, res) {
 })
 
 app.post("/newMembership", function (req, res) {
+    const currentDate = new Date();
 
     const member = new Member({
 
@@ -71,7 +72,8 @@ app.post("/newMembership", function (req, res) {
         email: req.body.email,
         phoneNumber: req.body.phoneNumber,
         interests: req.body.interests,
-        skillLevel: req.body.skillLevel
+        skillLevel: req.body.skillLevel,
+        joinedDate: currentDate
     })
 
     member.save();
@@ -309,7 +311,7 @@ app.get("/admin/members/:memberId", function (req, res) {
     Member.find({_id: memberId})
     .then((foundMember) => {
         console.log(foundMember);
-         res.render("member", { Member: foundMember });
+         res.render("memberDetails", { Member: foundMember });
     })
     .catch((err) => {
         console.log(err);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style-admin.css">
+    <link rel="stylesheet" href="/css/style-admin.css">
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -46,29 +46,34 @@
       </nav>
 
       <div class="home-content">
-        <div class="option">Liya Habtemariam</div>
+        <div class="option"><%=Member[0].firstName%> <%=Member[0].lastName%></div>
        <div class="info-container">
 
         <fieldset class="personal-info">
             <legend>Personal information</legend>
-<div class="detail"><label for="">Name: </label>Liya Habtemariam</span></div>
-<div class="detail"><label for="">Gender: </label><span>F</span></div>
-<div class="detail"><label for="">School ID: </label><span>RCD/4289/2013</span></div>
-<div class="detail"><label for="">Section: </label><span>M</span></div>
-<div class="detail"><label for=""><i class="fa fa-phone" aria-hidden="true"></i> </label><span>+251961144982</span></div>
-<div class="detail"><label for=""><i class="fa fa-envelope" aria-hidden="true"></i> </label><span>liyahabtemariam11@gmail.com</span></div>
+<div class="detail"><label for="">Name: </label><%=Member[0].firstName%> <%=Member[0].lastName%></span></div>
+<div class="detail"><label for="">Gender: </label><span><%=Member[0].gender%></span></div>
+<div class="detail"><label for="">School ID: </label><span><%=Member[0].schoolId%></span></div>
+<div class="detail"><label for="">Section: </label><span><%=Member[0].section%></span></div>
+<div class="detail"><label for=""><i class="fa fa-phone" aria-hidden="true"></i> </label><span><%=Member[0].phoneNumber%></span></div>
+<div class="detail"><label for=""><i class="fa fa-envelope" aria-hidden="true"></i> </label><span><%=Member[0].email%></span></div>
 
 
         </fieldset>
 
         <fieldset class="club-info">
             <legend>Club information</legend>
-            <div class="detail"><label for="">Position: </label>Secretary</span></div>
-            <div class="detail"><label for="">Start year: </label>2023</span></div>
-            <div class="detail"><label for="">Interest: </label><span>Programming, Web development</span></div>
-            <div class="detail"><label for="">Skill level: </label><span>Intermediate</span></div>
-            <div class="detail"><label for="">Total attendance: </label><span>7</span></div>
-            <div class="detail"><label for="">Special participations: </label><span>Exhibition, Club website</span></div>
+            <!-- <div class="detail"><label for="">Position: </label>Secretary</span></div> -->
+            <div class="detail"><label for="">Joined date: </label><%=Member[0].joinedDate.toDateString()%></span></div>
+            <div class="detail"><label for="">Interest: </label><span><%Member[0].interests.forEach(function(interest){ %>
+              
+              <%=interest%> ,
+
+            <% }) %>
+            </span></div>
+            <div class="detail"><label for="">Skill level: </label><span><%=Member[0].skillLevel%></span></div>
+            <div class="detail"><label for="">Total attendance: </label><span><%=Member[0].attendances.length%></span></div>
+            <!-- <div class="detail"><label for="">Special participations: </label><span>Exhibition, Club website</span></div> -->
 
 
         </fieldset>
