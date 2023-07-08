@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!---Custom CSS File--->
-    <link rel="stylesheet" href="../public/css/registration.css" />
+    <link rel="stylesheet" href="css/registration.css" />
     <title>Registration</title>
   </head>
   <body>
     <section class="container">
       <header>Registration Form</header>
-      <form action="#" class="form">
+      <form action="/newMembership" method="post" class="form">
         <div class="column">
             <div class="input-box">
               <label>First Name</label>
-              <input type="text" placeholder="First Name" required />
+              <input type="text" name="firstName" placeholder="First Name" required />
             </div>
             <div class="input-box">
               <label>Last Name</label>
-              <input type="text" placeholder="Last Name" required />
+              <input type="text" name="lastName" placeholder="Last Name" required />
             </div>
           </div>
 
@@ -27,11 +27,11 @@
             <h3>Gender</h3>
             <div class="gender-option">
               <div class="gender">
-                <input type="radio" id="check-male" name="gender" checked />
+                <input type="radio" id="check-male" name="gender" value="Male" checked />
                 <label for="check-male">male</label>
               </div>
               <div class="gender">
-                <input type="radio" id="check-female" name="gender" />
+                <input type="radio" id="check-female" name="gender" value="Female" />
                 <label for="check-female">Female</label>
               </div>
             </div>
@@ -40,50 +40,50 @@
         <div class="column">
             <div class="input-box">
               <label>Phone number</label>
-              <input type="tel" placeholder="Enter your phone number" required />
+              <input type="tel" name="phoneNumber" placeholder="Enter your phone number" required />
             </div>
             <div class="input-box">
               <label>Email</label>
-              <input type="email" placeholder="Enter your email" required />
+              <input type="email" name="email" placeholder="Enter your email" required />
             </div>
           </div>
 
         <div class="column">
           <div class="input-box">
             <label>School ID</label>
-            <input type="text" placeholder="Enter your school ID" required />
+            <input type="text" name="schoolId" placeholder="Enter your school ID" required />
           </div>
           <div class="input-box">
             <label>Section</label>
-            <input type="text" placeholder="Enter your section" required />
+            <input type="text" name="section" placeholder="Enter your section" required />
           </div>
         </div>
 
         <div><label for="skillLevel">Interest :</label></div>
         <div style="padding-left: 3%;">
-        <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
+        <input type="checkbox" name="interests" id="skillLevel" value="Programming">
         <label for="skillLevel" class="selection">Programming</label><br>
-        <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
+        <input type="checkbox" name="interests" id="skillLevel" value="Artificial Intelligence">
         <label for="skillLevel" class="selection">Artificial Intelligence</label><br>
-        <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
+        <input type="checkbox" name="interests" id="skillLevel" value="Cybersecurity">
         <label for="skillLevel" class="selection">Cybersecurity</label><br>
-        <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
+        <input type="checkbox" name="interests" id="skillLevel" value="Web Development">
         <label for="skillLevel" class="selection">Web Development</label><br>
-        <input type="checkbox" name="skillLevel" id="skillLevel" value="skillLevel">
+        <input type="checkbox" name="interests" id="skillLevel" value="Data science">
         <label for="skillLevel" class="selection">Data science</label>
         </div>
         
 
         <div><label for="interest" style="margin-right: 1%;">Your skill level at your most preffered interest is: </label>
-        <select name="interest" id="interest">
-          <option value="programming">Beginner</option>
-          <option value="programming">Intermediate</option>
-          <option value="programming">Advanced</option>
+        <select name="skillLevel" id="interest">
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
           </select>
         </div>
 
 
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </section>
   </body>

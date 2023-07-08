@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-admin.css">
+    <link rel="stylesheet" href="css/style-admin.css">
     <title>Admin Login</title>
 </head>
 <body>
     <div class="login-box">
-        <form>
+        <form action="/login" method="post">
             <div class="logintxt"><center>Login</center></div>
           <div class="user-box">
-            <input type="text" name="" required="">
-            <label>Username</label>
+            <input type="text" name="email" required="">
+            <label>Email</label>
           </div>
           <div class="user-box">
-            <input type="password" name="" required="">
+            <input type="password" name="password" required="">
             <label>Password</label>
           </div>
           <center>
-          <a href="#">
-                 Login
+          
+                <button type="submit">Login</button> 
              <span></span>
-          </a>
+          
           </center>
         </form>
       </div>

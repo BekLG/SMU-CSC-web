@@ -49,11 +49,18 @@ app.get("/", function (req, res) {
 
 })
 
+app.get("/termsAndConditions", function (req, res) {
+    // terms and conditions page will be displayed.
+    res.render("termsAndConditions");
+})
+
 app.get("/newMembership", function (req, res) {
     // new membership registration page will be displayed.
+    res.render("registration");
 })
 
 app.post("/newMembership", function (req, res) {
+    const currentDate = new Date();
 
     const member = new Member({
 
@@ -65,7 +72,8 @@ app.post("/newMembership", function (req, res) {
         email: req.body.email,
         phoneNumber: req.body.phoneNumber,
         interests: req.body.interests,
-        skillLevel: req.body.skillLevel
+        skillLevel: req.body.skillLevel,
+        joinedDate: currentDate
     })
 
     member.save();
@@ -93,9 +101,8 @@ app.get("/events", function (req, res) {
 
     Event.find({})
         .then((foundEvent) => {
-            // res.render("events", { Event: foundEvent, });
-            res.send(foundEvent);
-
+             res.render("events", { Events: foundEvent, });
+            
         })
         .catch((err) => {
             console.log(err);
@@ -130,6 +137,7 @@ app.post("/comment", function(req,res){
 
 app.get("/login", function (req, res) {
     // login page will be displayed
+    res.render("adminlogin")
 })
 
 app.post("/login", function (req, res) {
@@ -170,8 +178,10 @@ app.post("/login", function (req, res) {
 app.get("/admin", function (req, res) {
     // admin will be authenticated and admins page will be displayed.
 
-
-    Event.find({}).limit(3)
+    
+    if(req.session.isLoggedIn === true)
+    {
+        Event.find({}).limit(3)
         .then((foundEvent) => {
 
             News.find({}).limit(3)
@@ -188,11 +198,25 @@ app.get("/admin", function (req, res) {
             console.log(err);
         })
 
+    }
+    else{
+        res.redirect("/login")
+    }
+
+   
 })
 
 app.get("/admin/events", function (req, res) {
     // events and new-event adding form will be displayed for admin.
-    res.render("addEvent")
+    if(req.session.isLoggedIn === true)
+    {
+        res.render("addEvent")
+    }
+    else{
+        res.redirect("/login")
+    }
+
+    
 })
 
 app.post("/admin/events", upload.single('image'), function (req, res) {
@@ -205,19 +229,41 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
 
     const registrationRequired = req.body.registrationRequired === "on";
 
-    const event = new Event({
+    console.log(registrationRequired);
 
-        title: req.body.title,
-        dateAndTime: dateAndTime,
-        venue: req.body.venue,
-        description: req.body.description,
-        registrationRequired: registrationRequired,
-        registrationDeadline: registrationDeadline,
-        registrationLink: req.body.registrationLink,
-        imageURL: "uploads/images/" + req.file.filename
-    })
+    if(registrationRequired=== true)
+    {
+        const event = new Event({
 
-    event.save();
+            title: req.body.title,
+            dateAndTime: dateAndTime,
+            venue: req.body.venue,
+            description: req.body.description,
+            registrationRequired: registrationRequired,
+            registrationDeadline: registrationDeadline,
+            registrationLink: req.body.registrationLink,
+            imageURL: "uploads/images/" + req.file.filename
+        })
+
+        event.save();
+    }
+
+    else
+    {
+        const event = new Event({
+
+            title: req.body.title,
+            dateAndTime: dateAndTime,
+            venue: req.body.venue,
+            description: req.body.description,
+            registrationRequired: registrationRequired,
+            imageURL: "uploads/images/" + req.file.filename
+        })
+
+        event.save();
+    }
+
+    
     res.redirect("/admin");
 
     // on the front-end if registrationRequired is false the registrationLink input have to be disabled
@@ -226,7 +272,14 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
 
 app.get("/admin/news", function (req, res) {
     // news and new-news adding form will be displayed for admin.
-    res.render("addNews")
+    if(req.session.isLoggedIn === true)
+    {
+        res.render("addNews")
+    }
+    else{
+        res.redirect("/login")
+    }
+    
 })
 
 app.post("/admin/news", upload.single('image'), function (req, res) {
@@ -247,7 +300,14 @@ app.post("/admin/news", upload.single('image'), function (req, res) {
 
 app.get("/admin/gallery", function (req, res) {
     // image adding form will be displayed for admin.
-    res.render("addPhoto")
+    if(req.session.isLoggedIn === true)
+    {
+        res.render("addPhoto")
+    }
+    else{
+        res.redirect("/login")
+    }
+    
 })
 
 app.post("/admin/gallery", upload.single('image'), function (req, res) {
@@ -263,33 +323,72 @@ app.post("/admin/gallery", upload.single('image'), function (req, res) {
 
 app.get("/admin/members", function (req, res) {
     //  members list will be rendered
+    if(req.session.isLoggedIn === true)
+    {
+        Member.find({})
+        .then((foundMember) => {
+             res.render("members", { Member: foundMember, });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+    else{
+        res.redirect("/login")
+    }
 
-    Member.find({})
-    .then((foundMember) => {
-         res.render("members", { Member: foundMember, });
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+    
+})
+
+app.get("/admin/members/:memberId", function (req, res) {
+    //  members detail will be rendered
+    if(req.session.isLoggedIn === true)
+    {
+        const memberId= req.params.memberId;
+
+        Member.find({_id: memberId})
+        .then((foundMember) => {
+             res.render("memberDetails", { Member: foundMember });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+    else{
+        res.redirect("/login")
+    }
+
 
     
 })
 
 app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
-    Member.find({}).sort({ firstName: 1, lastName: 1 })
-    .then((foundMember) => {
-         res.render("attendance", { Member: foundMember, });
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+    if(req.session.isLoggedIn === true)
+    {
+        Member.find({})
+        .then((foundMember) => {
+            foundMember.sort((a, b) => a.firstName.localeCompare(b.firstName));
+    
+             res.render("attendance", { Member: foundMember, });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+    else{
+        res.redirect("/login")
+    }
+
 })
 
 app.post("/admin/attendance", function (req, res) {
     // new attendance will be saved on DB
 
     //creating attendance object
+    if(req.session.isLoggedIn === true)
+    {
+        
     const attendance = {
         date: new Date(), // Current date and time
         title: req.body.title,
@@ -332,6 +431,11 @@ app.post("/admin/attendance", function (req, res) {
             console.log(err);
           });        
       }
+    
+    }
+    else{
+        res.redirect("/login")
+    }
          
 })
 

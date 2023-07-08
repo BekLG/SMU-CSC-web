@@ -60,13 +60,14 @@
 
             <%Member.forEach(function(member){ %>
 
+              
               <tr>
                 <td><%=member.firstName%> <%=member.lastName%></td>
                 <td><%=member.schoolId%></td>
                 <td class="col-section"><%=member.section%></td>
                 <td class="col-gender"><%=member.gender%></td>
                 <td class="col-phoneNumber"><%=member.phoneNumber%></td>
-                <td><a href="memberDetails.html"><button>Details</button></a></td>
+                <td><a href="/admin/members/<%=member._id%>"><button>Details</button></a></td>
                 </tr>
 
             <%})%>
