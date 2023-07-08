@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>St. Mary's University Computer Science Club Terms and Conditions</title>
+  <title>St. Mary's University Computer Science Club Terms and Conditions.</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
     .scroll{
-width: 60%;
+width: 80%;
 height: 90vh;
 margin: auto;
 font-family: "Poppins", sans-serif;
 border: 2px solid lightgray;
-padding: 2rem;
+padding: 1rem;
 margin-top: 1rem;
 overflow:auto;
     }
     h1{
       color: #2a2a62;
-      font-size: 1.8rem;
+      font-size: 25px;
     }
     h2,h3{
       color: #2a2a62;
-      font-size: 1.7rem;
+      font-size: 23px;
+    }
+    p, ul li{
+      font-size: 15px;
     }
     button{
-      padding: .5rem;
-      margin: .5rem;
-      width: 80px;
+      padding: 10px;
+      margin: 10px;
+      width: 90px;
       border-radius: 5px;
     }
 
     @media screen and (max-width:920px){
-   h1,h2,h3{
-    font-size: 1.5rem;
-    }
     .scroll{
-      width: 80%;
+      width: 98%;
+    }
+    button{
+      padding: 13px;
+      margin: 10px;
+      width: 90px;
+      border-radius: 5px;
     }
 }
 
@@ -75,8 +81,8 @@ overflow:auto;
   <p>By registering for the St. Mary's University Computer Science Club, you agree to adhere to these terms and conditions. The club reserves the right to modify these terms as necessary, and any changes will be communicated to members. Failure to comply with these terms may result in disciplinary action, including revocation of membership privileges.</p>
 
   <p>If you have any questions or concerns regarding these terms, please contact the club administration for clarification.</p>
-  <input type="checkbox" name="agreement" id="check" onclick="enable()"> I agree to the terms and conditions.
-  <a href="registration.html"><button id="btn" disabled="true">Next</button></a>
+  <input type="checkbox" name="agreement" id="check" onclick="enable()"> <h3 style="display: inline; font-weight: bold; font-size: 18px;">I agree to the terms and conditions.</h3>
+  <a href="registration.html" style="font-size: 15px; padding: 15px; display: block;"><button id="btn" disabled="true">Next</button></a>
 </div>
 <script>
   function enable(){
