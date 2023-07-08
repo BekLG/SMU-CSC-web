@@ -348,7 +348,6 @@ app.get("/admin/members/:memberId", function (req, res) {
 
         Member.find({_id: memberId})
         .then((foundMember) => {
-            console.log(foundMember);
              res.render("memberDetails", { Member: foundMember });
         })
         .catch((err) => {
