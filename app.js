@@ -137,6 +137,7 @@ app.post("/comment", function(req,res){
 
 app.get("/login", function (req, res) {
     // login page will be displayed
+    res.render("adminlogin")
 })
 
 app.post("/login", function (req, res) {
