@@ -302,6 +302,22 @@ app.get("/admin/members", function (req, res) {
     
 })
 
+app.get("/admin/members/:memberId", function (req, res) {
+    //  members detail will be rendered
+    const memberId= req.params.memberId;
+
+    Member.find({_id: memberId})
+    .then((foundMember) => {
+        console.log(foundMember);
+         res.render("member", { Member: foundMember });
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
+    
+})
+
 app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
     Member.find({})
