@@ -2,11 +2,11 @@
   "name": "smu-csc-web",
   "version": "1.0.0",
   "description": "a web project for SMU CS club",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "author": "",
+  "author": "bek and liya",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
