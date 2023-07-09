@@ -34,7 +34,11 @@ app.use(session({
     saveUninitialized: false
 }));
 
-mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
+const dbUsername = process.env.DB_USERNAME;
+const dbPassword = process.env.DB_PASSWORD;
+mongoose.connect("mongodb+srv://" + dbUsername + ":" + dbPassword + "@clustersmu-csc.cgwzcdi.mongodb.net/SMU-CSC", { useNewUrlParser: true });
+
 
 
 app.get("/", function (req, res) {
