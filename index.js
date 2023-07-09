@@ -25,6 +25,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('public', path.join(__dirname, 'public'));
+app.set('modules', path.join(__dirname, 'modules'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -34,7 +35,11 @@ app.use(session({
     saveUninitialized: false
 }));
 
-mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/CSC-web", { useNewUrlParser: true });
+const dbUsername = process.env.DB_USERNAME;
+const dbPassword = process.env.DB_PASSWORD;
+mongoose.connect("mongodb+srv://" + dbUsername + ":" + dbPassword + "@clustersmu-csc.cgwzcdi.mongodb.net/SMU-CSC", { useNewUrlParser: true });
+
 
 
 app.get("/", function (req, res) {
