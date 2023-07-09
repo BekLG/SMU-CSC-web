@@ -84,7 +84,7 @@ app.post("/newMembership", function (req, res) {
 app.get("/news", function (req, res) {
     // news page will be displayed.
 
-    News.find({})
+    News.find({}).sort({ _id: -1 })
         .then((foundNews) => {
              res.render("news", { News: foundNews, });
 
@@ -99,7 +99,7 @@ app.get("/events", function (req, res) {
     // events page will be displayed.
     //on the front-end if registrationRequired is false the registrationLink button will not be rendered
 
-    Event.find({})
+    Event.find({}).sort({ _id: -1 })
         .then((foundEvent) => {
              res.render("events", { Events: foundEvent, });
             
@@ -112,7 +112,7 @@ app.get("/events", function (req, res) {
 app.get("/gallery", function (req, res) {
     // gallery page will be displayed.
 
-    GalleryImage.find({})
+    GalleryImage.find({}).sort({ _id: -1 })
         .then((foundImage) => {
             res.render("gallery", { Images: foundImage, });
         })
@@ -181,10 +181,10 @@ app.get("/admin", function (req, res) {
     
     if(req.session.isLoggedIn === true)
     {
-        Event.find({}).limit(3)
+        Event.find({}).limit(3).sort({ _id: -1 })
         .then((foundEvent) => {
 
-            News.find({}).limit(3)
+            News.find({}).limit(3).sort({ _id: -1 })
             .then((foundNews) => {
                 res.render("admin", { News: foundNews, Event: foundEvent });
             })
@@ -325,7 +325,7 @@ app.get("/admin/members", function (req, res) {
     //  members list will be rendered
     if(req.session.isLoggedIn === true)
     {
-        Member.find({})
+        Member.find({}).sort({ _id: -1 })
         .then((foundMember) => {
              res.render("members", { Member: foundMember, });
         })
