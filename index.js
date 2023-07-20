@@ -238,6 +238,11 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
 
     console.log(registrationRequired);
 
+    cloudinary.uploader.upload(req.file.path, (error, result) => {
+        const imageUrl = req.file.path;
+
+    })
+
     if(registrationRequired=== true)
     {
         const event = new Event({
@@ -291,17 +296,22 @@ app.get("/admin/news", function (req, res) {
 
 app.post("/admin/news", upload.single('image'), function (req, res) {
     // new-news will be saved on database .
+    cloudinary.uploader.upload(req.file.path, (error, result) => {
+        const imageUrl = req.file.path;
 
-    const currentDate = new Date();
+        const currentDate = new Date();
 
-    const news = new News({
-        title: req.body.title,
-        date: currentDate,
-        content: req.body.content,
-        imageURL: "uploads/images/" + req.file.filename
+        const news = new News({
+            title: req.body.title,
+            date: currentDate,
+            content: req.body.content,
+            imageURL: imageUrl
+        })
+
+        news.save();
     })
 
-    news.save();
+    
     res.redirect("/admin");
 })
 
