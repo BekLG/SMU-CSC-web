@@ -241,39 +241,41 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
     cloudinary.uploader.upload(req.file.path, (error, result) => {
         const imageUrl = req.file.path;
 
+
+        if(registrationRequired=== true)
+        {
+            const event = new Event({
+    
+                title: req.body.title,
+                dateAndTime: dateAndTime,
+                venue: req.body.venue,
+                description: req.body.description,
+                registrationRequired: registrationRequired,
+                registrationDeadline: registrationDeadline,
+                registrationLink: req.body.registrationLink,
+                imageURL: imageUrl
+            })
+    
+            event.save();
+        }
+    
+        else
+        {
+            const event = new Event({
+    
+                title: req.body.title,
+                dateAndTime: dateAndTime,
+                venue: req.body.venue,
+                description: req.body.description,
+                registrationRequired: registrationRequired,
+                imageURL: imageUrl
+            })
+    
+            event.save();
+        }
     })
 
-    if(registrationRequired=== true)
-    {
-        const event = new Event({
 
-            title: req.body.title,
-            dateAndTime: dateAndTime,
-            venue: req.body.venue,
-            description: req.body.description,
-            registrationRequired: registrationRequired,
-            registrationDeadline: registrationDeadline,
-            registrationLink: req.body.registrationLink,
-            imageURL: "uploads/images/" + req.file.filename
-        })
-
-        event.save();
-    }
-
-    else
-    {
-        const event = new Event({
-
-            title: req.body.title,
-            dateAndTime: dateAndTime,
-            venue: req.body.venue,
-            description: req.body.description,
-            registrationRequired: registrationRequired,
-            imageURL: "uploads/images/" + req.file.filename
-        })
-
-        event.save();
-    }
 
     
     res.redirect("/admin");
