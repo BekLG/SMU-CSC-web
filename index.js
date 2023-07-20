@@ -18,6 +18,8 @@ const GalleryImage = require("./modules/galleryImage")
 const upload = require('./modules/multerMiddleware')
 const Admin = require('./modules/admin')
 const Comment = require('./modules/comment')
+const cloudinary = require('./modules/cloudinary');
+
 
 
 const app = express();
@@ -317,12 +319,34 @@ app.get("/admin/gallery", function (req, res) {
 
 app.post("/admin/gallery", upload.single('image'), function (req, res) {
     // new photos-path and caption will be saved on database.
-    const galleryImage = new GalleryImage({
-        caption: req.body.caption,
-        imageURL: "uploads/images/" + req.file.filename
-    })
 
-    galleryImage.save();
+
+    cloudinary.uploader.upload(req.file.path, (error, result) => {
+        // if (error) {
+        //   console.error('Error uploading to Cloudinary:', error);
+        //   res.status(500).json({ error: 'Failed to upload image to Cloudinary' });
+        // } else {
+        //   // The public URL of the uploaded image on Cloudinary
+        //   const imageUrl = result.secure_url;
+        //   res.json({ imageUrl });
+        // }
+        const imageUrl = req.file.path;
+
+        const galleryImage = new GalleryImage({
+            caption: req.body.caption,
+            imageURL: imageUrl
+        })
+    
+        galleryImage.save();
+
+      });
+
+      
+      
+
+
+
+   
     res.redirect("/admin");
 })
 
