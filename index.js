@@ -198,8 +198,6 @@ app.get("/admin", function (req, res) {
             .catch((err) => {
                 console.log(err);
             })
-            
-
         })
         .catch((err) => {
             console.log(err);
@@ -209,8 +207,6 @@ app.get("/admin", function (req, res) {
     else{
         res.redirect("/login")
     }
-
-   
 })
 
 app.get("/admin/events", function (req, res) {
@@ -223,7 +219,6 @@ app.get("/admin/events", function (req, res) {
         res.redirect("/login")
     }
 
-    
 })
 
 app.post("/admin/events", upload.single('image'), function (req, res) {
@@ -274,9 +269,6 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
             event.save();
         }
     })
-
-
-
     
     res.redirect("/admin");
 
