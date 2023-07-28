@@ -499,9 +499,6 @@ app.listen(3000, function (req, res) {
                 admin.save();
 
             }
-            else {
-                console.log("admin found!");
-            }
         })
         .catch((err) => {
             console.log(err);
