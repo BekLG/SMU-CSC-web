@@ -47,12 +47,12 @@ mongoose.connect("mongodb+srv://" + dbUsername + ":" + dbPassword + "@clustersmu
 app.get("/", function (req, res) {
     // home page will be displayed
     GalleryImage.aggregate([{ $sample: { size: 5 } }])  //pick 5 images randomly from gallery.
-    .then((foundImage) => {
-         res.render("index", { Images: foundImage });
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+        .then((foundImage) => {
+            res.render("index", { Images: foundImage });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 
 })
 
@@ -93,7 +93,7 @@ app.get("/news", function (req, res) {
 
     News.find({}).sort({ _id: -1 })
         .then((foundNews) => {
-             res.render("news", { News: foundNews, });
+            res.render("news", { News: foundNews, });
 
         })
         .catch((err) => {
@@ -108,8 +108,8 @@ app.get("/events", function (req, res) {
 
     Event.find({}).sort({ _id: -1 })
         .then((foundEvent) => {
-             res.render("events", { Events: foundEvent, });
-            
+            res.render("events", { Events: foundEvent, });
+
         })
         .catch((err) => {
             console.log(err);
@@ -128,14 +128,14 @@ app.get("/gallery", function (req, res) {
         })
 })
 
-app.post("/comment", function(req,res){
+app.post("/comment", function (req, res) {
     //a comment from user will be saved on db
     const commnet = new Comment({
 
         name: req.body.name,
         email: req.body.email,
         comment: req.body.comment
-   
+
     })
 
     commnet.save();
@@ -185,37 +185,35 @@ app.post("/login", function (req, res) {
 app.get("/admin", function (req, res) {
     // admin will be authenticated and admins page will be displayed.
 
-    
-    if(req.session.isLoggedIn === true)
-    {
-        Event.find({}).limit(3).sort({ _id: -1 })
-        .then((foundEvent) => {
 
-            News.find({}).limit(3).sort({ _id: -1 })
-            .then((foundNews) => {
-                res.render("admin", { News: foundNews, Event: foundEvent });
+    if (req.session.isLoggedIn === true) {
+        Event.find({}).limit(3).sort({ _id: -1 })
+            .then((foundEvent) => {
+
+                News.find({}).limit(3).sort({ _id: -1 })
+                    .then((foundNews) => {
+                        res.render("admin", { News: foundNews, Event: foundEvent });
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
             })
             .catch((err) => {
                 console.log(err);
             })
-        })
-        .catch((err) => {
-            console.log(err);
-        })
 
     }
-    else{
+    else {
         res.redirect("/login")
     }
 })
 
 app.get("/admin/events", function (req, res) {
     // events and new-event adding form will be displayed for admin.
-    if(req.session.isLoggedIn === true)
-    {
+    if (req.session.isLoggedIn === true) {
         res.render("addEvent")
     }
-    else{
+    else {
         res.redirect("/login")
     }
 
@@ -237,10 +235,9 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
         const imageUrl = req.file.path;
 
 
-        if(registrationRequired=== true)
-        {
+        if (registrationRequired === true) {
             const event = new Event({
-    
+
                 title: req.body.title,
                 dateAndTime: dateAndTime,
                 venue: req.body.venue,
@@ -250,14 +247,13 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
                 registrationLink: req.body.registrationLink,
                 imageURL: imageUrl
             })
-    
+
             event.save();
         }
-    
-        else
-        {
+
+        else {
             const event = new Event({
-    
+
                 title: req.body.title,
                 dateAndTime: dateAndTime,
                 venue: req.body.venue,
@@ -265,11 +261,11 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
                 registrationRequired: registrationRequired,
                 imageURL: imageUrl
             })
-    
+
             event.save();
         }
     })
-    
+
     res.redirect("/admin");
 
     // on the front-end if registrationRequired is false the registrationLink input have to be disabled
@@ -278,14 +274,13 @@ app.post("/admin/events", upload.single('image'), function (req, res) {
 
 app.get("/admin/news", function (req, res) {
     // news and new-news adding form will be displayed for admin.
-    if(req.session.isLoggedIn === true)
-    {
+    if (req.session.isLoggedIn === true) {
         res.render("addNews")
     }
-    else{
+    else {
         res.redirect("/login")
     }
-    
+
 })
 
 app.post("/admin/news", upload.single('image'), function (req, res) {
@@ -305,20 +300,19 @@ app.post("/admin/news", upload.single('image'), function (req, res) {
         news.save();
     })
 
-    
+
     res.redirect("/admin");
 })
 
 app.get("/admin/gallery", function (req, res) {
     // image adding form will be displayed for admin.
-    if(req.session.isLoggedIn === true)
-    {
+    if (req.session.isLoggedIn === true) {
         res.render("addPhoto")
     }
-    else{
+    else {
         res.redirect("/login")
     }
-    
+
 })
 
 app.post("/admin/gallery", upload.single('image'), function (req, res) {
@@ -326,73 +320,70 @@ app.post("/admin/gallery", upload.single('image'), function (req, res) {
 
 
     cloudinary.uploader.upload(req.file.path, (error, result) => {
-       
+
         const imageUrl = req.file.path;
 
         const galleryImage = new GalleryImage({
             caption: req.body.caption,
             imageURL: imageUrl
         })
-    
+
         galleryImage.save();
 
-      });
-   
+    });
+
     res.redirect("/admin");
 })
 
 app.get("/admin/members", function (req, res) {
     //  members list will be rendered
-    if(req.session.isLoggedIn === true)
-    {
+    if (req.session.isLoggedIn === true) {
         Member.find({}).sort({ _id: -1 })
-        .then((foundMember) => {
-             res.render("members", { Member: foundMember, });
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            .then((foundMember) => {
+                res.render("members", { Member: foundMember, });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
-    else{
+    else {
         res.redirect("/login")
-    } 
+    }
 })
 
 app.get("/admin/members/:memberId", function (req, res) {
     //  members detail will be rendered
-    if(req.session.isLoggedIn === true)
-    {
-        const memberId= req.params.memberId;
+    if (req.session.isLoggedIn === true) {
+        const memberId = req.params.memberId;
 
-        Member.find({_id: memberId})
-        .then((foundMember) => {
-             res.render("memberDetails", { Member: foundMember });
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        Member.find({ _id: memberId })
+            .then((foundMember) => {
+                res.render("memberDetails", { Member: foundMember });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
-    else{
+    else {
         res.redirect("/login")
     }
-    
+
 })
 
 app.get("/admin/attendance", function (req, res) {
     // attendance taking page will be rendered
-    if(req.session.isLoggedIn === true)
-    {
+    if (req.session.isLoggedIn === true) {
         Member.find({})
-        .then((foundMember) => {
-            foundMember.sort((a, b) => a.firstName.localeCompare(b.firstName));
-    
-             res.render("attendance", { Member: foundMember, });
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            .then((foundMember) => {
+                foundMember.sort((a, b) => a.firstName.localeCompare(b.firstName));
+
+                res.render("attendance", { Member: foundMember, });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
-    else{
+    else {
         res.redirect("/login")
     }
 
@@ -402,57 +393,55 @@ app.post("/admin/attendance", function (req, res) {
     // new attendance will be saved on DB
 
     //creating attendance object
-    if(req.session.isLoggedIn === true)
-    {
-        
-    const attendance = {
-        date: new Date(), // Current date and time
-        title: req.body.title,
-        attendanceType: req.body.attendanceType
-      };
-      
-      const attendedMembers = req.body.attended;
-     
-    
-      if(Array.isArray(attendedMembers)===true)
-      {
-        
-      attendedMembers.forEach((attendedMember) => {
+    if (req.session.isLoggedIn === true) {
 
-        var query = { _id: attendedMember };
-        Member.findOneAndUpdate(query, {
-          $push: { attendances: attendance }
-        })
-          .then(() => {
-           
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        
-      });
-      
-        res.redirect("/admin");
-      }
-      else{
-        //only one member is attended, so it can not be performed by forEach. we will handle it solely
-        var query = { _id: attendedMembers };
-        Member.findOneAndUpdate(query, {
-          $push: { attendances: attendance }
-        })
-          .then(() => {
+        const attendance = {
+            date: new Date(), // Current date and time
+            title: req.body.title,
+            attendanceType: req.body.attendanceType
+        };
+
+        const attendedMembers = req.body.attended;
+
+
+        if (Array.isArray(attendedMembers) === true) {
+
+            attendedMembers.forEach((attendedMember) => {
+
+                var query = { _id: attendedMember };
+                Member.findOneAndUpdate(query, {
+                    $push: { attendances: attendance }
+                })
+                    .then(() => {
+
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+
+            });
+
             res.redirect("/admin");
-          })
-          .catch((err) => {
-            console.log(err);
-          });        
-      }
-    
+        }
+        else {
+            //only one member is attended, so it can not be performed by forEach. we will handle it solely
+            var query = { _id: attendedMembers };
+            Member.findOneAndUpdate(query, {
+                $push: { attendances: attendance }
+            })
+                .then(() => {
+                    res.redirect("/admin");
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+
     }
-    else{
+    else {
         res.redirect("/login")
     }
-         
+
 })
 
 app.listen(3000, function (req, res) {
