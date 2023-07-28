@@ -334,14 +334,7 @@ app.post("/admin/gallery", upload.single('image'), function (req, res) {
 
 
     cloudinary.uploader.upload(req.file.path, (error, result) => {
-        // if (error) {
-        //   console.error('Error uploading to Cloudinary:', error);
-        //   res.status(500).json({ error: 'Failed to upload image to Cloudinary' });
-        // } else {
-        //   // The public URL of the uploaded image on Cloudinary
-        //   const imageUrl = result.secure_url;
-        //   res.json({ imageUrl });
-        // }
+       
         const imageUrl = req.file.path;
 
         const galleryImage = new GalleryImage({
@@ -352,12 +345,6 @@ app.post("/admin/gallery", upload.single('image'), function (req, res) {
         galleryImage.save();
 
       });
-
-      
-      
-
-
-
    
     res.redirect("/admin");
 })
@@ -376,9 +363,7 @@ app.get("/admin/members", function (req, res) {
     }
     else{
         res.redirect("/login")
-    }
-
-    
+    } 
 })
 
 app.get("/admin/members/:memberId", function (req, res) {
@@ -398,8 +383,6 @@ app.get("/admin/members/:memberId", function (req, res) {
     else{
         res.redirect("/login")
     }
-
-
     
 })
 
@@ -479,9 +462,6 @@ app.post("/admin/attendance", function (req, res) {
     }
          
 })
-
-
-
 
 app.listen(3000, function (req, res) {
     console.log("listening on port 3000");
